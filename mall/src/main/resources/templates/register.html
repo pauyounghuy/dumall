@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{css/proj/index.css}" />
+
+    <script type="text/javascript" th:src="@{js/jquery-1.12.4.js}"></script>
+    <script type="text/javascript" th:src="@{js/bootstrap.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.form.js}"></script>
+    <script type="text/javascript" th:src="@{js/proj/register.js}"></script>
+</head>
+<body >
+
+<div class="container-fluid">
+    <img th:src="@{pic/background.png}" style="position: fixed;">
+    <div class="row">
+        <div class="col-md-4 index_frame">
+
+            <form action="#" id="indexForm">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <div class="input-group ">
+                            <!--<span class="input-group-btn index_banner center">入口</span>-->
+                        </div>
+                    </div>
+
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">用户名</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="username" name="username" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">密码</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="password" name="password" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">确认密码</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="pwd" name="pwd" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">姓名</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="name" name="name" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">手机</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="mobile" name="mobile" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">QQ</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="qq" name="qq" value="">
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <div class="input-group col-md-12">
+                            <span class="input-group-btn index_text">邮箱</span>
+                            <span class="input-group-btn index_input">
+                                    <input type="text" class="form-control input_text" id="email" name="email" value="">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="col-md-12 form-group center">
+                        <button type="button" class="btn btn-primary" style="margin-right: 1%;" id="cancel">取消</button>
+                        <button type="submit" class="btn btn-success" style="margin-right: 1%;" id="confirm">确认</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+
+</html>

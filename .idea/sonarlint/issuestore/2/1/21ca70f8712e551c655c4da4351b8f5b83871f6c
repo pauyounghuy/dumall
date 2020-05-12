@@ -1,0 +1,11 @@
+
+[
+java:S37520">Add a "method" parameter to this "@RequestMapping" annotation.(Ä·è‡8¼¿†À .
+\
+java:S1854&"?Remove this useless assignment to local variable "addressList".(·—Í„8¢ÜÀ .
+M
+java:S1481&"0Remove this unused "addressList" local variable.(·—Í„8¢ÜÀ .
+[
+java:S3752!">Add a "method" parameter to this "@RequestMapping" annotation.(‘ºÓ¹8¼¿†À .
+b
+java:S46841"@Replace this persistent entity with a simple POJO or DTO object.(ä…Š‰úÿÿÿÿ8¼¿†À .

@@ -1,0 +1,21 @@
+
+Z
+java:S3752S">Add a "method" parameter to this "@RequestMapping" annotation.(ª£¡8ÓÈ¾ .
+k
+java:S1192,"IDefine a constant instead of duplicating this literal "username" 4 times.(ø·ğşÿÿÿÿ8Ç€°š .
+^
+java:S3457&"AFormat specifiers should be used instead of string concatenation.(¥–Ù±8œ„„™ .
+T
+java:S2629&"7Use the built-in formatting to construct this argument.(¥–Ù±8œ„„™ .
+[
+java:S3752$">Add a "method" parameter to this "@RequestMapping" annotation.(ô¸èÉ8œ„„™ .
+[
+java:S3400!"9Remove this method and declare a constant for this value.(¦œû×ÿÿÿÿÿ8œ„„™ .
+`
+java:S3752O">Add a "method" parameter to this "@RequestMapping" annotation.(ùÙ™­úÿÿÿÿ8œ„„™ .
+u
+java:S11929"SDefine a constant instead of duplicating this literal "hazelcast-instance" 3 times.(ğÂª×ûÿÿÿÿ8Ç€°š .
+`
+java:S3752u">Add a "method" parameter to this "@RequestMapping" annotation.(ÓÃÁºøÿÿÿÿ8ÿµş .
+t
+java:S3776%"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ŒÖ÷ıÿÿÿÿ8ÓÈ¾ .
