@@ -37,7 +37,7 @@
         <package name="com.byh.mall.entity"/>
    	</typeAliases> 
    	
-	<!-- 插件 -->
+	<!-- 插件
 		<plugins>
 	       <plugin interceptor="com.github.pagehelper.PageInterceptor">
 	   		<property name="helperDialect" value="mysql"/>
@@ -50,7 +50,7 @@
 	        <property name="autoRuntimeDialect" value="false"/>
 	        <property name="closeConn" value="true"/>  
 	    </plugin>
-	</plugins>
+	</plugins> -->
 	
 	<!-- 引用mappers映射文件 -->  
     <!--<mappers>     -->
