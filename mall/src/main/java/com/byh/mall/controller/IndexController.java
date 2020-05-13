@@ -1,7 +1,6 @@
 package com.byh.mall.controller;
 import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.User;
-import com.byh.mall.entity.Visitor;
 import com.byh.mall.service.UserService;
 import com.byh.mall.service.VisitorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,17 +9,15 @@ import commons.JSONResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Controller
+@RestController
 public class IndexController extends BaseController
 {
 	private static final Logger log = LoggerFactory.getLogger(IndexController.class);
@@ -33,7 +30,7 @@ public class IndexController extends BaseController
 
 	//登录
 	@RequestMapping("/login")
-	public JSONResult login(Model model, String username, String password, String code, HttpServletRequest request, HttpServletResponse response,String ip){
+	public JSONResult login(String username, String password, String code, HttpServletRequest request, HttpServletResponse response,String ip){
 		log.info("username:"+username+"==> password:"+password);
 
 		if(StringUtils.isEmpty(username)){
@@ -66,6 +63,7 @@ public class IndexController extends BaseController
 				hazelcast.getMap("hazelcast-instance").putAsync(username, user);
 				Cookie cookie=new Cookie(username, user.getUsername());
 				cookie.setMaxAge(7200);
+				cookie.setPath("/");
 				response.addCookie(cookie);
 			}
 		}
@@ -132,21 +130,21 @@ public class IndexController extends BaseController
 	}
 	private void addRecord(String username,String ip)
 	{
-		if (!StringUtils.isEmpty(ip)){ //登录
-			Visitor visitor = new Visitor(ip,username,1);
-			visitor.setVisitTime(visitor.getVisitTime());
-			visitorService.saveVisitor(visitor);
-		}
-		else{  //退出
-			Visitor visitor = visitorService.getVisitorEnter(username);
-			if(!ObjectUtils.isEmpty(visitor) && visitor.getIsEnter() ==1){
-				visitor.setQuitTime(visitor.getQuitTime());
-				visitor.setDuration(visitor.getDuration());
-				visitor.setIsEnter(0);
-				visitorService.saveVisitor(visitor);
-			}
-
-		}
+//		if (!StringUtils.isEmpty(ip)){ //登录
+//			Visitor visitor = new Visitor(ip,username,1);
+//			visitor.setVisitTime(visitor.getVisitTime());
+//			visitorService.saveVisitor(visitor);
+//		}
+//		else{  //退出
+//			Visitor visitor = visitorService.getVisitorEnter(username);
+//			if(!ObjectUtils.isEmpty(visitor) && visitor.getIsEnter() ==1){
+//				visitor.setQuitTime(visitor.getQuitTime());
+//				visitor.setDuration(visitor.getDuration());
+//				visitor.setIsEnter(0);
+//				visitorService.saveVisitor(visitor);
+//			}
+//
+//		}
 
 	}
 }
