@@ -5,12 +5,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.thymeleaf.util.StringUtils;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
 //游客访问/登录记录
-@Document(collation = "visitor")
+@Entity
+@Document(collation = "visitor_record")
 public class Visitor
 {
 	public static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
