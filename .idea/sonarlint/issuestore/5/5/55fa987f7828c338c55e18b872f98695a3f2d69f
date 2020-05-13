@@ -1,0 +1,4 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Â¶Ä“
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(ê»èÞþÿÿÿÿ
+N	java:S106,"9Replace this use of System.out or System.err by a logger.(½øÒÈ

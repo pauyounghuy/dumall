@@ -5,6 +5,8 @@ import com.byh.mall.dao.OrderGoodsDAO;
 import com.byh.mall.entity.Order;
 import com.byh.mall.entity.OrderGoods;
 import com.byh.mall.service.OrderService;
+import com.byh.mall.vo.SearchVO;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,5 +36,10 @@ public class OrderServiceImpl extends BaseService implements OrderService
 	public List<OrderGoods> getOgList(Long oid)
 	{
 		return orderGoodsDAO.getOrder(oid);
+	}
+	@Override
+	public PageInfo<Order> getOrderByPage(SearchVO searchVO, int pageNum, int pageSize)
+	{
+		return orderDAO.getOrderByCondition(searchVO, pageNum, pageSize);
 	}
 }

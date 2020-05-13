@@ -2,7 +2,12 @@ package com.byh.mall.dao.impl;
 import com.byh.mall.base.BaseDAO;
 import com.byh.mall.dao.OrderDAO;
 import com.byh.mall.dao.mapper.OrderMapper;
+import com.byh.mall.entity.Address;
+import com.byh.mall.entity.Goods;
 import com.byh.mall.entity.Order;
+import com.byh.mall.vo.SearchVO;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,5 +33,15 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO
 	public Order getOrder(Long id)
 	{
 		return orderMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public PageInfo<Order> getOrderByCondition(SearchVO searchVO, int pageNum, int pageSize)
+	{
+		Example example = new Example(Order.class);
+		example.createCriteria().andEqualTo("status",searchVO.getStatus());
+		PageHelper.startPage(pageNum, pageSize);
+		List<Order> list = orderMapper.selectByExample(example);
+		PageInfo<Order> pageInfo = new PageInfo<>(list);
+		return pageInfo;
 	}
 }

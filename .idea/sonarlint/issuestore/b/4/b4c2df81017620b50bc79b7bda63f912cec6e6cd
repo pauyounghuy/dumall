@@ -1,5 +1,5 @@
 
-‚
-java:S1488 "`Immediately return this expression instead of assigning it to the temporary variable "pageInfo".(¼øë­ûÿÿÿÿ8 …¨¾ .
 q
 java:S3252"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ8Ô¹×İ .
+‚
+java:S1488 "`Immediately return this expression instead of assigning it to the temporary variable "pageInfo".(¼øë­ûÿÿÿÿ8 …¨¾ .

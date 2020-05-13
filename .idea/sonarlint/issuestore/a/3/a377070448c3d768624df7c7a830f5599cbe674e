@@ -1,0 +1,11 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÂðØ¥ûÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(—ŒÙ
+U
+java:S1854#":Remove this useless assignment to local variable "longId".(­Ñ«—ÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(™ñâ¾
+F
+java:S1481#"+Remove this unused "longId" local variable.(­Ñ«—ÿÿÿÿÿ
+Q	java:S125>"<This block of commented-out lines of code should be removed.(ÞçøÈ
+I
+java:S11449"3Remove this unused private "sendAllMessage" method.(›ž¾Ü

@@ -1,0 +1,22 @@
+
+M	java:S106@"9Replace this use of System.out or System.err by a logger.(Çİˆ7
+‡
+java:S1130""lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(óÉœĞıÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(°ò¿ç
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(š—°øÿÿÿÿ
+M	java:S106F"9Replace this use of System.out or System.err by a logger.(ı—‰
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(Á†Éúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ŸÎ Şûÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(àÉ–ßıÿÿÿÿ
+N	java:S106$"9Replace this use of System.out or System.err by a logger.(ùû±É
+9
+java:S1148)"#Use a logger to log this exception.(Óùóÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(Óáü
+S	java:S106."9Replace this use of System.out or System.err by a logger.(øºÑûúÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(àÉ–ßıÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(àÉ–ßıÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(àÉ–ßıÿÿÿÿ

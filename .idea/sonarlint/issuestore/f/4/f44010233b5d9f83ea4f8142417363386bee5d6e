@@ -1,0 +1,51 @@
+
+^
+java:S3457%"AFormat specifiers should be used instead of string concatenation.(ÜŞŸâ8°Œıà .
+T
+java:S1444"2Make this "public static onlineNumber" field final(èóÁ‹øÿÿÿÿ8°Œıà .
+Y
+java:S2629V"7Use the built-in formatting to construct this argument.(Øè–úüÿÿÿÿ8°Œıà .
+Z	java:S106e"9Replace this use of System.out or System.err by a logger.(äãƒîÿÿÿÿÿ8°Œıà .
+c
+java:S3457T"AFormat specifiers should be used instead of string concatenation.(ªíºÁúÿÿÿÿ8°Œıà .
+E
+java:S1148{"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8°Œıà .
+]	java:S125A"<This block of commented-out lines of code should be removed.(À¤ª˜şÿÿÿÿ8°Œıà .
+X	java:S125I"<This block of commented-out lines of code should be removed.(ŠãÍ²8°Œıà .
+z
+java:S1104"XMake onlineNumber a static final constant or non-public and provide accessors if needed.(èóÁ‹øÿÿÿÿ8°Œıà .
+c
+java:S3457@"AFormat specifiers should be used instead of string concatenation.(¨óã¦ÿÿÿÿÿ8°Œıà .
+V
+java:S1172Œ"3Remove this unused method parameter "FromUserName".(¸ã­„úÿÿÿÿ8°Œıà .
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ùÚ¥8°Œıà .
+^
+java:S3457c"AFormat specifiers should be used instead of string concatenation.(ëŸ±´8°Œıà .
+X
+java:S2696H"6Make the enclosing method "static" or remove this set.(š¸Ê¬şÿÿÿÿ8°Œıà .
+c
+java:S3457""AFormat specifiers should be used instead of string concatenation.(‹şóşÿÿÿÿ8°Œıà .
+X
+java:S2696!"6Make the enclosing method "static" or remove this set.(üˆ”·úÿÿÿÿ8°Œıà .
+Y
+java:S2629""7Use the built-in formatting to construct this argument.(‹şóşÿÿÿÿ8°Œıà .
+T
+java:S2629%"7Use the built-in formatting to construct this argument.(ÜŞŸâ8°Œıà .
+c
+java:S34579"AFormat specifiers should be used instead of string concatenation.(¸ó¾³úÿÿÿÿ8°Œıà .
+T
+java:S2629c"7Use the built-in formatting to construct this argument.(ëŸ±´8°Œıà .
+n	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê‰Ù8°Œıà .
+s	java:S117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ã­„úÿÿÿÿ8°Œıà .
+
+java:S1130Œ"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(¸ã­„úÿÿÿÿ8°Œıà .
+^	java:S125„"<This block of commented-out lines of code should be removed.(â¬½”øÿÿÿÿ8°Œıà .
+_
+java:S1192+"IDefine a constant instead of duplicating this literal "username" 3 times.(åŒÆ
+Š
+java:S1130‚"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ê‰Ù8°Œıà .
+i
+java:S1192*"LDefine a constant instead of duplicating this literal "messageType" 4 times.(ß˜‡8°Œıà .
+c
+java:S3457V"AFormat specifiers should be used instead of string concatenation.(Øè–úüÿÿÿÿ8°Œıà .

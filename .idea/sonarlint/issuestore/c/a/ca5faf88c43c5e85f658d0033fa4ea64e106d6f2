@@ -1,0 +1,17 @@
+
+M
+java:S1444"2Make this "public static channelIdMap" field final(…ÈÌÌşÿÿÿÿ
+M
+java:S1444"2Make this "public static channelGroup" field final(üá§©úÿÿÿÿ
+s
+java:S1104"XMake channelIdMap a static final constant or non-public and provide accessors if needed.(…ÈÌÌşÿÿÿÿ
+s
+java:S1104"XMake channelGroup a static final constant or non-public and provide accessors if needed.(üá§©úÿÿÿÿ
+—
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çÙ¯¤
+8
+java:S2386"Make this member "protected".(…ÈÌÌşÿÿÿÿ
+8
+java:S2386"Make this member "protected".(üá§©úÿÿÿÿ
+3
+java:S1118"Hide this public constructor.(çÙ¯¤
