@@ -69,3 +69,8 @@
     请求：{"status":"1","pageNum": 1,"pageSize": 10}
     响应：
 ````
+##### 15.显示验证码图片：localhost:8092/code/get
+````json
+    请求：无需传参
+    响应：
+````

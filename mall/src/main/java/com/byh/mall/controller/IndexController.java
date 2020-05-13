@@ -3,6 +3,7 @@ import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.User;
 import com.byh.mall.service.UserService;
 import com.byh.mall.service.VisitorService;
+import com.byh.mall.utils.VerifyCodeUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hazelcast.core.HazelcastInstance;
 import commons.JSONResult;
@@ -54,6 +55,15 @@ public class IndexController extends BaseController
 		User user = om.convertValue(obj, User.class);
 
 		if(ObjectUtils.isEmpty(user)){
+			//校验验证码
+//			if(StringUtils.isEmpty(code)){
+//				return JSONResult.errorMsg("验证码不能为空");
+//			}
+//			if(!VerifyCodeUtils.checkVerifyCode(request)){
+//				return JSONResult.errorMsg("验证码不一致或已失效");
+//			}
+
+			//获取用户数据
 			user = userService.checkUsername(username);
 			if(ObjectUtils.isEmpty(user)){
 				log.info("用户名不存在");
@@ -147,4 +157,7 @@ public class IndexController extends BaseController
 //		}
 
 	}
+
+
+
 }
