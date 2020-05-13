@@ -18,6 +18,7 @@ public class VisitorController extends BaseController
 	//记录游客
 	@RequestMapping("/record")
 	public void recordVisitor(HttpServletRequest request, Visitor visitor){
+		visitor.setVisitTime(visitor.getVisitTime());
 		visitorService.saveVisitor(visitor);
 	}
 

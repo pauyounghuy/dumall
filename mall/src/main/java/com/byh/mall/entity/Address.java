@@ -36,6 +36,7 @@ public class Address extends BaseEntity
 	@JsonProperty("telephone")
 	private String telephone;
 
+	//1选中默认  0不选中
 	@Column(name="IS_DEFAULT")
 	@JsonProperty("isDefault")
 	private int isDefault=0;

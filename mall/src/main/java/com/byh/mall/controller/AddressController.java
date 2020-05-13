@@ -39,6 +39,13 @@ public class AddressController extends BaseController
 	public JSONResult add(HttpServletRequest request, Address address,Long userKey)
 	{
 		address.setUserKey(userKey);
+		if (address.getIsDefault()==1){
+			List<Address> adsList = addressService.getAddress(userKey);
+			for (Address ad : adsList){
+				ad.setIsDefault(0);
+				addressService.updateAddress(ad);
+			}
+		}
 		addressService.saveAddress(address);
 		return JSONResult.ok();
 	}
@@ -48,7 +55,14 @@ public class AddressController extends BaseController
 	{
 		address.setUserKey(userKey);
 		address.setUpdateDate(DateUtils.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss"));
-		addressService.saveAddress(address);
+		if (address.getIsDefault()==1){
+			List<Address> adsList = addressService.getAddress(userKey);
+			for (Address ad : adsList){
+				ad.setIsDefault(0);
+				addressService.updateAddress(ad);
+			}
+		}
+		addressService.updateAddress(address);
 		return JSONResult.ok();
 	}
 	//删

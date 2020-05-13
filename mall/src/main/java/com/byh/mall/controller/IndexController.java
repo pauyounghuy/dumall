@@ -27,11 +27,6 @@ public class IndexController extends BaseController
 	@Autowired
 	private HazelcastInstance hazelcast;
 
-
-	//首页
-	public String index(){
-		return "index";
-	}
 	//登录
 	@RequestMapping("/login")
 	public JSONResult login(Model model, String username, String password, String code, HttpServletRequest request, HttpServletResponse response){
@@ -65,7 +60,7 @@ public class IndexController extends BaseController
 			}
 			else{  //存在用户名,存入缓存
 				hazelcast.getMap("hazelcast-instance").putAsync(username, user);
-				Cookie cookie=new Cookie("username", user.getUsername());
+				Cookie cookie=new Cookie(username, user.getUsername());
 				cookie.setMaxAge(7200);
 				response.addCookie(cookie);
 			}
@@ -76,10 +71,6 @@ public class IndexController extends BaseController
 		return JSONResult.ok(user);
 	}
 	//注册
-	@RequestMapping("/toRegister")
-	public String toRegister(){
-		return "register";
-	}
 	@RequestMapping("/register")
 	public JSONResult register(String username,String password,String pwd,String name,String mobile,String qq,String email){
 		if(!password.equals(pwd)){
@@ -115,14 +106,14 @@ public class IndexController extends BaseController
 
 	//退出
 	@RequestMapping("/logout")
-	public JSONResult logout(HttpServletRequest request,HttpServletResponse response)
+	public JSONResult logout(HttpServletRequest request,HttpServletResponse response,String username)
 	{
 		//清空缓存与cookies
-		hazelcast.getMap("hazelcast-instance").removeAsync("username");
+		hazelcast.getMap("hazelcast-instance").removeAsync(username);
 		Cookie[] cookies=request.getCookies();
 
 		for(Cookie cookie: cookies){
-			if (cookie.getName().equals("username")){
+			if (cookie.getName().equals(username)){
 				cookie.setMaxAge(0);
 				cookie.setPath("/");
 				response.addCookie(cookie);

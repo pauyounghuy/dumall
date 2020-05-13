@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -26,7 +27,16 @@ public class AddressDAOImpl extends BaseDAO implements AddressDAO
 	public PageInfo<Address> getAddressByPage(SearchVO searchVO, int pageNum, int pageSize)
 	{
 		Example example = new Example(Address.class);
-		example.createCriteria().andLike("name",searchVO.getName()).andLike("streetName",searchVO.getStreetName());
+		example.createCriteria();
+		if(!StringUtils.isEmpty(searchVO.getUserKey())){
+			example.and().andEqualTo("userKey",searchVO.getUserKey());
+		}
+		if(!StringUtils.isEmpty(searchVO.getName())){
+			example.and().andLike("name",searchVO.getName());
+		}
+		if(!StringUtils.isEmpty(searchVO.getStreetName())){
+			example.and().andLike("streetName",searchVO.getStreetName());
+		}
 		PageHelper.startPage(pageNum, pageSize);
 		List<Address> list = addressMapper.selectByExample(example);
 		PageInfo<Address> pageInfo = new PageInfo<>(list);
