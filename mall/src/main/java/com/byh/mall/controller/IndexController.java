@@ -37,7 +37,7 @@ public class IndexController extends BaseController
 			Cookie[] cookies=request.getCookies();
 			if (cookies != null && cookies.length>0){
 				for(Cookie cookie: cookies){
-					if (cookie.getName().equals("username")){
+					if (cookie.getName().equals(username)){
 						username=cookie.getValue();
 					}
 				}
