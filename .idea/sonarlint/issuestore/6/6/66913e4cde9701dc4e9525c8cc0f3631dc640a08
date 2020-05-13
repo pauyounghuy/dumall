@@ -1,0 +1,9 @@
+
+q
+java:S3252*"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ8à²¦å .
+}
+java:S1488,"`Immediately return this expression instead of assigning it to the temporary variable "pageInfo".(º¥‰ç8à²¦å .
+Z
+java:S1128"8Remove this unused import 'com.byh.mall.entity.Address'.(¢±ûÿÿÿÿÿ8à²¦å .
+S
+java:S1128"6Remove this unused import 'com.byh.mall.entity.Goods'.(öØïÚ8ªà¦å .

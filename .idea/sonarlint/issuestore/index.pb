@@ -133,3 +133,13 @@ d
 4mall/src/main/java/com/byh/mall/wst/MyNetSocket.java,2\c\2c03ef2d57135d9c104a7df72f7fecf554aab76c
 a
 1mall/src/main/java/com/byh/mall/wst/MySocket.java,f\4\f44010233b5d9f83ea4f8142417363386bee5d6e
+l
+<mall/src/main/java/com/byh/mall/entity/VerificationCode.java,6\2\62d089a176c3557df0a36db83dad0d2c8f5e56e1
+e
+5mall/src/main/java/com/byh/mall/entity/BuyRecord.java,2\0\2032a3b093d95d3246dc1fc79f8334251c80844d
+t
+Dmall/src/main/java/com/byh/mall/controller/VerifyCodeController.java,4\4\44e2ba55fc2db94a0402dc9b3b2160e202d45973
+j
+:mall/src/main/java/com/byh/mall/utils/VerifyCodeUtils.java,4\6\460aa1c8ce950cc3f44760cfb0d20b8134b71427
+n
+>mall/src/main/java/com/byh/mall/controller/SendController.java,0\6\06b85bedfe04ea133ed33008e109bf29c4397576
