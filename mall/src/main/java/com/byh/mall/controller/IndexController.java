@@ -37,7 +37,7 @@ public class IndexController extends BaseController
 			Cookie[] cookies=request.getCookies();
 			if (cookies != null && cookies.length>0){
 				for(Cookie cookie: cookies){
-					if (cookie.getName().equals(username)){
+					if (cookie.getName().equals("username")){
 						username=cookie.getValue();
 					}
 				}
@@ -50,7 +50,7 @@ public class IndexController extends BaseController
 		}
 
 		ObjectMapper om = new ObjectMapper();
-		Object obj= hazelcast.getMap("hazelcast-instance").get(username);  //先通过缓存获取是否存在
+		Object obj= hazelcast.getMap("hazelcast-instance").get("username");  //先通过缓存获取是否存在
 		User user = om.convertValue(obj, User.class);
 
 		if(ObjectUtils.isEmpty(user)){
@@ -60,8 +60,8 @@ public class IndexController extends BaseController
 				return JSONResult.errorMsg("用户名不存在");
 			}
 			else{  //存在用户名,存入缓存
-				hazelcast.getMap("hazelcast-instance").putAsync(username, user);
-				Cookie cookie=new Cookie(username, user.getUsername());
+				hazelcast.getMap("hazelcast-instance").putAsync("username", user);
+				Cookie cookie=new Cookie("username", user.getUsername());
 				cookie.setMaxAge(7200);
 				cookie.setPath("/");
 				response.addCookie(cookie);
@@ -112,11 +112,11 @@ public class IndexController extends BaseController
 	public JSONResult logout(HttpServletRequest request,HttpServletResponse response,String username)
 	{
 		//清空缓存与cookies
-		hazelcast.getMap("hazelcast-instance").removeAsync(username);
+		hazelcast.getMap("hazelcast-instance").removeAsync("username");
 		Cookie[] cookies=request.getCookies();
 
 		for(Cookie cookie: cookies){
-			if (cookie.getName().equals(username)){
+			if (cookie.getName().equals("username")){
 				cookie.setMaxAge(0);
 				cookie.setPath("/");
 				response.addCookie(cookie);
