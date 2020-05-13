@@ -1,6 +1,6 @@
 登录：localhost:8092/login
 ````json
-{"username":"byh","password":"123"}
+{"username":"byh","password":"123","ip": "123.1.2.3"}
 ````
 注册：localhost:8092/register
 ````json

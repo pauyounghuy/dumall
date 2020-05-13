@@ -1,7 +1,7 @@
 
-q
-java:S3252"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ8ğùË¼ .
+}
+java:S1488*"`Immediately return this expression instead of assigning it to the temporary variable "pageInfo".(·ÁÖÎ8ğùË¼ .
 R
 java:S1128"5Remove this unused import 'com.byh.mall.entity.User'.(°Õ¿ş8éÊ’½ .
-}
-java:S1488 "`Immediately return this expression instead of assigning it to the temporary variable "pageInfo".(·ÁÖÎ8ğùË¼ .
+q
+java:S3252("OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ8ğùË¼ .

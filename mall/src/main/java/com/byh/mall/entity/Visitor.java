@@ -40,28 +40,19 @@ public class Visitor
 	public Visitor()
 	{
 	}
-	public Visitor(String ip, String visitTime, int isEnter)
+	public Visitor(String ip,int isEnter)
 	{
 		this.ip = ip;
-		this.visitTime = visitTime;
+
 		this.isEnter = isEnter;
 	}
-	public Visitor(String ip, String visitTime, String userName, int isEnter)
+	public Visitor(String ip,String userName, int isEnter)
 	{
 		this.ip = ip;
-		this.visitTime = visitTime;
 		this.userName = userName;
 		this.isEnter = isEnter;
 	}
-	public Visitor(String ip, String visitTime, String userName, int isEnter, String quitTime, Float duration)
-	{
-		this.ip = ip;
-		this.visitTime = visitTime;
-		this.userName = userName;
-		this.isEnter = isEnter;
-		this.quitTime = quitTime;
-		this.duration = duration;
-	}
+
 	public Long getId()
 	{
 		return id;
