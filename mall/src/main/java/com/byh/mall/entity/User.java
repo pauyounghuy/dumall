@@ -84,6 +84,7 @@ public class User extends BaseEntity
 		this.email = email;
 		this.qq = qq;
 	}
+
 	public Long getId()
 	{
 		return id;

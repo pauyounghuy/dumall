@@ -30,7 +30,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 	@Override
 	public void saveUser(User user)
 	{
-		userMapper.insertSelective(user);
+		userMapper.insertUseGeneratedKeys(user);
 	}
 	@Override
 	public void updateUser(User user)

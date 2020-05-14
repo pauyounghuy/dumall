@@ -1,9 +1,11 @@
 package com.byh.mall.base;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Column;
 import java.io.Serializable;
+import java.util.Date;
 
 public class BaseEntity extends CommonBase implements Serializable
 {
@@ -21,7 +23,7 @@ public class BaseEntity extends CommonBase implements Serializable
 
 	public String getCreateDate()
 	{
-		return createDate;
+		return new DateTime(new Date()).toString(STANDARD_DATE);
 	}
 	public void setCreateDate(String createDate)
 	{
@@ -29,7 +31,7 @@ public class BaseEntity extends CommonBase implements Serializable
 	}
 	public String getUpdateDate()
 	{
-		return updateDate;
+		return new DateTime(new Date()).toString(STANDARD_DATE);
 	}
 	public void setUpdateDate(String updateDate)
 	{
