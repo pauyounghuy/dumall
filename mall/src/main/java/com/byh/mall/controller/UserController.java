@@ -7,10 +7,13 @@ import com.byh.mall.utils.RandomUtils;
 import com.byh.mall.vo.CartVO;
 import com.byh.mall.vo.OrderVO;
 import com.byh.mall.vo.UserInfoVO;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hazelcast.core.HazelcastInstance;
 import commons.JSONResult;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +35,11 @@ public class UserController extends BaseController
 	private OrderService orderService;
 	@Autowired
 	private GoodsService goodsService;
+	@Autowired
+	private VerificationCodeService verificationCodeService;
+
+	@Autowired
+	private HazelcastInstance hazelcast;
 	@Autowired
 	private MailService mailService;
 
@@ -98,16 +106,45 @@ public class UserController extends BaseController
 			return JSONResult.errorMsg("用户不存在");
 		}
 		//生成验证码
-		String num= RandomUtils.random(6).toUpperCase();
+		String code= RandomUtils.random(6).toUpperCase();
+		hazelcast.getMap("hazelcast-instance").putAsync(userKey, code);
 		VerificationCode verificationCode = new VerificationCode();
-//		SimpleMailMessage
+		SimpleMailMessage sm=new SimpleMailMessage();
+
+		sm.setFrom("928828480@qq.com");
+		sm.setTo(user.getEmail());
+		sm.setSubject("邮箱验证码");
+		sm.setText(code);
+		mailService.sendMail(sm);
+
+		verificationCode.setCode(sm.getText());
+		verificationCode.setUserKey(userKey);
+		verificationCode.setEmail(user.getEmail());
+		verificationCode.setSendTime(verificationCode.getSendTime());
+		verificationCode.setCreateDate(verificationCode.getCreateDate());
+		verificationCode.setStatus(1);
+
+		verificationCodeService.saveVerificationCode(verificationCode);
+
 		return JSONResult.ok();
 	}
 	//验证邮箱
 	@RequestMapping("/verifyEmail")
 	public JSONResult sendEmail(HttpServletRequest request, Long userKey,String code)
 	{
+		ObjectMapper om = new ObjectMapper();
+		Object obj = hazelcast.getMap("hazelcast-instance").get(userKey);
+		String cde=om.convertValue(obj, String.class);
+		if(StringUtils.isEmpty(code) || !code.equals(cde)){
+			return JSONResult.errorMsg("验证码不一致,请重新输入");
+		}
 
+		User user =userService.getKey(userKey);
+		user.setIsVMail(1);
+		user.setUpdateDate(user.getUpdateDate());
+		userService.updateUser(user);
+
+		hazelcast.getMap("hazelcast-instance").removeAsync(userKey);
 		return JSONResult.ok();
 	}
 
