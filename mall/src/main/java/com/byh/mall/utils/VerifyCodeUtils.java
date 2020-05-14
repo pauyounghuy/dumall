@@ -12,7 +12,6 @@ import java.util.Random;
 public class VerifyCodeUtils
 {
 	public static final String RANDOMKEY= "RANDOMKEY";//放到session中的key
-	private String randString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";//随机产生数字与字母组合的字符串
 	private int width = 95;// 图片宽
 	private int height = 25;// 图片高
 	private int lineSize = 40;// 干扰线数量
@@ -82,7 +81,7 @@ public class VerifyCodeUtils
 	private String drowString(Graphics g, String randomString, int i) {
 		g.setFont(getFont());
 		g.setColor(new Color(random.nextInt(101), random.nextInt(111), random.nextInt(121)));
-		String rand = String.valueOf(getRandomString(random.nextInt(randString.length())));
+		String rand = String.valueOf(getRandomString(random.nextInt(RandomUtils.RAND_STR.length())));
 		randomString += rand;
 		g.translate(random.nextInt(3), random.nextInt(3));
 		g.drawString(rand, 13 * i, 16);
@@ -104,7 +103,7 @@ public class VerifyCodeUtils
 	 * 获取随机的字符
 	 */
 	public String getRandomString(int num) {
-		return String.valueOf(randString.charAt(num));
+		return String.valueOf(RandomUtils.RAND_STR.charAt(num));
 	}
 
 	/**
