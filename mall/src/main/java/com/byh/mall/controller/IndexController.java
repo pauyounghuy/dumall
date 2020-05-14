@@ -70,6 +70,10 @@ public class IndexController extends BaseController
 				return JSONResult.errorMsg("用户名不存在");
 			}
 			else{  //存在用户名,存入缓存
+				if (!password.equals(user.getPassword())){
+					return JSONResult.errorMsg("密码错误，请重新输入");
+				}
+
 				hazelcast.getMap("hazelcast-instance").putAsync("username", user);
 				Cookie cookie=new Cookie("username", user.getUsername());
 				cookie.setMaxAge(7200);

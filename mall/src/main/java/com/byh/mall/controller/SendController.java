@@ -6,4 +6,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/send")
 public class SendController
 {
+	//https://cloud.tencent.com/document/product/382/43194
 }
