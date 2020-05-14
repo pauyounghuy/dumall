@@ -3,12 +3,14 @@ import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.*;
 import com.byh.mall.mail.MailService;
 import com.byh.mall.service.*;
+import com.byh.mall.utils.RandomUtils;
 import com.byh.mall.vo.CartVO;
 import com.byh.mall.vo.OrderVO;
 import com.byh.mall.vo.UserInfoVO;
 import commons.JSONResult;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
@@ -91,9 +93,14 @@ public class UserController extends BaseController
 	@RequestMapping("/sendEmail")
 	public JSONResult sendEmail(HttpServletRequest request, Long userKey)
 	{
-
-
-
+		User user = userService.getKey(userKey);
+		if(user== null){
+			return JSONResult.errorMsg("用户不存在");
+		}
+		//生成验证码
+		String num= RandomUtils.random(6).toUpperCase();
+		VerificationCode verificationCode = new VerificationCode();
+//		SimpleMailMessage
 		return JSONResult.ok();
 	}
 	//验证邮箱

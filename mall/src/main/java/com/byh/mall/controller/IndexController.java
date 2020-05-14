@@ -100,7 +100,7 @@ public class IndexController extends BaseController
 			if (ObjectUtils.isEmpty(user)){
 				user=userService.checkUsername(mobile);
 				if (ObjectUtils.isEmpty(user)){
-					user = new User(username, name, password, mobile, qq, email);
+					user = new User(username, name, password, mobile, email,qq);
 					userService.saveUser(user);
 				}
 				else

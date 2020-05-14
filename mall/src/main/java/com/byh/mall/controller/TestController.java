@@ -1,14 +1,12 @@
 package com.byh.mall.controller;
-import com.byh.mall.entity.Goods;
-import com.byh.mall.entity.User;
-import com.byh.mall.service.GoodsService;
 import com.byh.mall.service.UserService;
-import com.byh.mall.vo.SearchVO;
-import com.github.pagehelper.PageInfo;
+import com.byh.mall.utils.RandomUtils;
 import commons.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Random;
 
 @RestController
 @RequestMapping("/test")
@@ -19,9 +17,7 @@ public class TestController
 
 	@RequestMapping("/get")
 	public JSONResult get(){
-		User user=new User("xxx","xd","123","123","111@q.com","9090");
-		userService.saveUser(user);
-		return JSONResult.ok();
+		return JSONResult.ok(RandomUtils.random(4));
 	}
 
 
