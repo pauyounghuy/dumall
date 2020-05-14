@@ -183,6 +183,12 @@
       <artifactId>hazelcast-all</artifactId>
       <version>3.12.7</version>
     </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>jakarta.mail</artifactId>
+      <version>1.6.5</version>
+    </dependency>
+
     <!--<dependency>-->
       <!--<groupId>com.github.ben-manes.caffeine</groupId>-->
       <!--<artifactId>caffeine</artifactId>-->

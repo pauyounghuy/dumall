@@ -1,4 +1,4 @@
 package com.byh.mall.base;
-public class BaseController
+public class BaseController extends CommonBase
 {
 }

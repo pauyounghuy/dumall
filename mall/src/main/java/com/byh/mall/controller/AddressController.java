@@ -54,7 +54,7 @@ public class AddressController extends BaseController
 	public JSONResult update(HttpServletRequest request, Address address,Long userKey)
 	{
 		address.setUserKey(userKey);
-		address.setUpdateDate(DateUtils.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss"));
+		address.setUpdateDate(DateUtils.formatDate(new Date(),super.STANDARD_DATE));
 		if (address.getIsDefault()==1){
 			List<Address> adsList = addressService.getAddress(userKey);
 			for (Address ad : adsList){

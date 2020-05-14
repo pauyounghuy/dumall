@@ -1,6 +1,8 @@
 package com.byh.mall.entity;
 
-public class SendMessage
+import java.io.Serializable;
+
+public class SendMessage implements Serializable
 {
 	//发件人
 	private String from;

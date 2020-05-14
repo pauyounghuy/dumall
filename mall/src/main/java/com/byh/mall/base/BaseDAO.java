@@ -1,4 +1,4 @@
 package com.byh.mall.base;
-public class BaseDAO
+public class BaseDAO extends CommonBase
 {
 }

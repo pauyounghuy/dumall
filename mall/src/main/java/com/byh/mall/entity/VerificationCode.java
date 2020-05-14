@@ -1,9 +1,9 @@
 package com.byh.mall.entity;
 
+import com.byh.mall.base.BaseEntity;
 import org.joda.time.DateTime;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

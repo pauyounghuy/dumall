@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.persistence.Column;
 import java.io.Serializable;
 
-public class BaseEntity implements Serializable
+public class BaseEntity extends CommonBase implements Serializable
 {
 	//创建日期
 	@Column(name="CREATE_DATE")

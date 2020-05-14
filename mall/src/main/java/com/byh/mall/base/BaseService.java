@@ -1,4 +1,5 @@
 package com.byh.mall.base;
-public class BaseService
+public class BaseService extends CommonBase
 {
+
 }
