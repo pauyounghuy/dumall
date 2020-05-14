@@ -1,11 +1,21 @@
 
 `
-java:S3752d">Add a "method" parameter to this "@RequestMapping" annotation.(«•¯äþÿÿÿÿ8¬©ó¡.
-[
-java:S3752&">Add a "method" parameter to this "@RequestMapping" annotation.(‘ºÓ¹8¼¿†À .
+java:S1854+">Remove this useless assignment to local variable "userInfoVO".(ÜüÖ™øÿÿÿÿ8¤›€É .
 `
-java:S1854)">Remove this useless assignment to local variable "userInfoVO".(ÜüÖ™øÿÿÿÿ8¤›€É .
+java:S3752]">Add a "method" parameter to this "@RequestMapping" annotation.(ÆŸÎîøÿÿÿÿ8žÃé¡.
+T
+java:S1854e"7Remove this useless assignment to local variable "num".(²ôþÜ8Ù¨†’¡.
 `
-java:S3752[">Add a "method" parameter to this "@RequestMapping" annotation.(ÆŸÎîøÿÿÿÿ8žÃé¡.
+java:S3752k">Add a "method" parameter to this "@RequestMapping" annotation.(«•¯äþÿÿÿÿ8¬©ó¡.
+b
+java:S4684U"@Replace this persistent entity with a simple POJO or DTO object.(ä…Š‰úÿÿÿÿ8ôè‘¡.
+a
+java:S1854f"DRemove this useless assignment to local variable "verificationCode".(‘Ÿ¡À8Ë³’¡.
+R
+java:S1481f"5Remove this unused "verificationCode" local variable.(‘Ÿ¡À8Ë³’¡.
 [
-java:S3752R">Add a "method" parameter to this "@RequestMapping" annotation.(Ä·è‡8¼¿†À .
+java:S3752(">Add a "method" parameter to this "@RequestMapping" annotation.(‘ºÓ¹8¼¿†À .
+[
+java:S3752T">Add a "method" parameter to this "@RequestMapping" annotation.(Ä·è‡8¼¿†À .
+E
+java:S1481e"(Remove this unused "num" local variable.(²ôþÜ8’òŠ’¡.

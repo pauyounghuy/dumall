@@ -1,22 +1,22 @@
 
-^	java:S125“"<This block of commented-out lines of code should be removed.(Ç¬–Èùÿÿÿÿ8›Â«‰¡.
-u
-java:S11926"SDefine a constant instead of duplicating this literal "hazelcast-instance" 3 times.(„¾·Ìùÿÿÿÿ8Ç€°š .
-D
-java:S1172‘"&Remove these unused method parameters.(òá»Â8›Â«‰¡.
-Z
-java:S3752[">Add a "method" parameter to this "@RequestMapping" annotation.(ª£¡8›Â«‰¡.
-t
-java:S3776""RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(í€€Êşÿÿÿÿ8ÓÈ¾ .
 T
 java:S2629#"7Use the built-in formatting to construct this argument.(¥–Ù±8œ„„™ .
 [
 java:S3752!">Add a "method" parameter to this "@RequestMapping" annotation.(ô¸èÉ8œ„„™ .
-^
-java:S3457#"AFormat specifiers should be used instead of string concatenation.(¥–Ù±8œ„„™ .
+Z
+java:S3752[">Add a "method" parameter to this "@RequestMapping" annotation.(ª£¡8›Â«‰¡.
 k
 java:S1192)"IDefine a constant instead of duplicating this literal "username" 6 times.(ø·ğşÿÿÿÿ8·ãç .
 ^	java:S125¡"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8›Â«‰¡.
+t
+java:S3776""RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(í€€Êşÿÿÿÿ8ÓÈ¾ .
+^
+java:S3457#"AFormat specifiers should be used instead of string concatenation.(¥–Ù±8œ„„™ .
+D
+java:S1172‘"&Remove these unused method parameters.(òá»Â8›Â«‰¡.
 X	java:S125;"<This block of commented-out lines of code should be removed.(øÈ±ñ8 ª¶ê .
+^	java:S125“"<This block of commented-out lines of code should be removed.(Ç¬–Èùÿÿÿÿ8›Â«‰¡.
+u
+java:S11926"SDefine a constant instead of duplicating this literal "hazelcast-instance" 3 times.(„¾·Ìùÿÿÿÿ8Ç€°š .
 `
 java:S3752}">Add a "method" parameter to this "@RequestMapping" annotation.(ÓÃÁºøÿÿÿÿ8›Â«‰¡.
