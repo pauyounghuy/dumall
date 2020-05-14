@@ -3,34 +3,50 @@ package com.byh.mall.entity;
 import org.joda.time.DateTime;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 //发送记录
 @Entity
+@Table(name="app_verification_code")
 @Document(collation = "send_record")
 public class VerificationCode
 {
 	public static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 	@Id
+	@Column(name="ID")
 	@Field("vid")
 	private Long id;
+	@Column(name="USER_KEY")
 	@Field("userKey")
 	private Long userKey;
+	@Column(name="EMAIL")
 	@Field("email")
 	private String email;
+	@Column(name="MOBILE")
 	@Field("mobile")
 	private String mobile;
+	@Column(name="TYPE")
 	@Field("type")
 	private int type;
+	@Column(name="CODE")
 	@Field("code")
 	private String code;
+	@Column(name="TITLE")
+	@Field("title")
+	private String title;
+	@Column(name="MSG")
 	@Field("msg")
 	private String msg;
+	@Column(name="SEND_TIME")
 	@Field("sendTime")
 	private String sendTime;
+	@Column(name="CREATE_DATE")
 	@Field("createDate")
 	private String createDate;
 
