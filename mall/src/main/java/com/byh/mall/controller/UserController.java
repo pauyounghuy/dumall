@@ -1,6 +1,7 @@
 package com.byh.mall.controller;
 import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.*;
+import com.byh.mall.mail.MailService;
 import com.byh.mall.service.*;
 import com.byh.mall.vo.CartVO;
 import com.byh.mall.vo.OrderVO;
@@ -29,6 +30,8 @@ public class UserController extends BaseController
 	private OrderService orderService;
 	@Autowired
 	private GoodsService goodsService;
+	@Autowired
+	private MailService mailService;
 
 
 	//获取用户信息
@@ -84,7 +87,21 @@ public class UserController extends BaseController
 		return JSONResult.ok();
 	}
 
+	//发送邮件确认
+	@RequestMapping("/sendEmail")
+	public JSONResult sendEmail(HttpServletRequest request, Long userKey)
+	{
 
 
+
+		return JSONResult.ok();
+	}
+	//验证邮箱
+	@RequestMapping("/verifyEmail")
+	public JSONResult sendEmail(HttpServletRequest request, Long userKey,String code)
+	{
+
+		return JSONResult.ok();
+	}
 
 }

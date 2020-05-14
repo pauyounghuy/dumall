@@ -1,6 +1,5 @@
 package com.byh.mall.entity;
 
-import com.byh.mall.base.BaseEntity;
 import org.joda.time.DateTime;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -31,9 +30,6 @@ public class VerificationCode
 	@Column(name="MOBILE")
 	@Field("mobile")
 	private String mobile;
-	@Column(name="TYPE")
-	@Field("type")
-	private int type;
 	@Column(name="CODE")
 	@Field("code")
 	private String code;
@@ -49,6 +45,10 @@ public class VerificationCode
 	@Column(name="CREATE_DATE")
 	@Field("createDate")
 	private String createDate;
+	@Column(name="STATUS")
+	@Field("status")
+	private int status=0;  //0已创建  1已发送  2失败
+
 
 	public Long getId()
 	{
@@ -82,14 +82,6 @@ public class VerificationCode
 	{
 		this.mobile = mobile;
 	}
-	public int getType()
-	{
-		return type;
-	}
-	public void setType(int type)
-	{
-		this.type = type;
-	}
 	public String getCode()
 	{
 		return code;
@@ -121,5 +113,21 @@ public class VerificationCode
 	public void setCreateDate(String createDate)
 	{
 		this.createDate = createDate;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+	public int getStatus()
+	{
+		return status;
+	}
+	public void setStatus(int status)
+	{
+		this.status = status;
 	}
 }

@@ -56,6 +56,22 @@ public class User extends BaseEntity
 	@Field("qq")
 	private String qq;
 
+	//是否手机确认
+	@Column(name="isVMobile")
+	@JsonProperty("isVMobile")
+	@Field("isVMobile")
+	private int isVMobile=0;
+	//是否邮箱确认
+	@Column(name="isVMail")
+	@JsonProperty("isVMail")
+	@Field("isVMail")
+	private int isVMail=0;
+	//是否qq确认
+	@Column(name="isVQQ")
+	@JsonProperty("isVQQ")
+	@Field("isVQQ")
+	private int isVQQ=0;
+
 	public User()
 	{
 	}
@@ -124,6 +140,28 @@ public class User extends BaseEntity
 	{
 		this.name = name;
 	}
-
-
+	public int getIsVMobile()
+	{
+		return isVMobile;
+	}
+	public void setIsVMobile(int isVMobile)
+	{
+		this.isVMobile = isVMobile;
+	}
+	public int getIsVMail()
+	{
+		return isVMail;
+	}
+	public void setIsVMail(int isVMail)
+	{
+		this.isVMail = isVMail;
+	}
+	public int getIsVQQ()
+	{
+		return isVQQ;
+	}
+	public void setIsVQQ(int isVQQ)
+	{
+		this.isVQQ = isVQQ;
+	}
 }
