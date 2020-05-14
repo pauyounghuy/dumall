@@ -1,6 +1,6 @@
 ##### 1.登录：localhost:8092/login
 ````json
-请求：{"username":"byh","password":"123","ip": "123.1.2.3"}
+请求：{"username":"byh","password":"123","code":"123"}
 响应：
 ````
 ##### 2.注册：localhost:8092/register
@@ -74,7 +74,16 @@
     请求：无需传参
     响应：
 ````
-
+##### 16.发送邮件确认：localhost:8092/user/sendEmail
+````json
+    请求：{"userKey":"123"}
+    响应：
+````
+##### 17.验证邮箱：localhost:8092/user/verifyEmail
+````json
+    请求：{"userKey":"123","code":"qwe213q"}
+    响应：
+````
 
 
 

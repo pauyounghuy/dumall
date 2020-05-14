@@ -13,6 +13,7 @@ import commons.JSONResult;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -132,9 +133,13 @@ public class UserController extends BaseController
 	@RequestMapping("/verifyEmail")
 	public JSONResult sendEmail(HttpServletRequest request, Long userKey,String code)
 	{
-		ObjectMapper om = new ObjectMapper();
 		Object obj = hazelcast.getMap("hazelcast-instance").get(userKey);
+		if (ObjectUtils.isEmpty(obj)){
+			return JSONResult.errorMsg("验证码已失效");
+		}
+		ObjectMapper om = new ObjectMapper();
 		String cde=om.convertValue(obj, String.class);
+
 		if(StringUtils.isEmpty(code) || !code.toUpperCase().equals(cde)){
 			return JSONResult.errorMsg("验证码不一致,请重新输入");
 		}
