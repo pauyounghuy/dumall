@@ -94,29 +94,34 @@ public class IndexController extends BaseController
 			log.info("前后密码不一致");
 			return JSONResult.errorMsg("前后密码不一致");
 		}
-		User user=userService.checkUsername(username);
-		if (ObjectUtils.isEmpty(user)){
-			user=userService.checkUsername(email);
-			if (ObjectUtils.isEmpty(user)){
-				user=userService.checkUsername(mobile);
-				if (ObjectUtils.isEmpty(user)){
-					user = new User(username, name, password, mobile, email,qq);
-					userService.saveUser(user);
-				}
-				else
-				{
-					return JSONResult.errorMsg("手机号已存在");
-				}
+		if(StringUtils.isEmpty(username) && StringUtils.isEmpty(mobile) && StringUtils.isEmpty(email)){
+			return JSONResult.errorMsg("用户名 或 邮箱 或 手机号 至少需填一项");
+		}
+		User user=null;
+		if (!StringUtils.isEmpty(username)){
+			user=userService.checkUsername(username);
+			if (!ObjectUtils.isEmpty(user))
+			{
+				return JSONResult.errorMsg("用户名已存在");
 			}
-			else
+		}
+		if (!StringUtils.isEmpty(email)){
+			user = userService.checkUsername(email);
+			if (!ObjectUtils.isEmpty(user))
 			{
 				return JSONResult.errorMsg("邮箱已存在");
 			}
 		}
-		else
-		{
-			return JSONResult.errorMsg("用户名已存在");
+		if (!StringUtils.isEmpty(mobile)){
+			user=userService.checkUsername(mobile);
+			if (!ObjectUtils.isEmpty(user))
+			{
+				return JSONResult.errorMsg("手机号已存在");
+			}
 		}
+
+		user = new User(username, name, password, mobile, email,qq);
+		userService.saveUser(user);
 
 		return JSONResult.ok();
 	}
