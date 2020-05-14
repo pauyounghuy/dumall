@@ -135,7 +135,7 @@ public class UserController extends BaseController
 		ObjectMapper om = new ObjectMapper();
 		Object obj = hazelcast.getMap("hazelcast-instance").get(userKey);
 		String cde=om.convertValue(obj, String.class);
-		if(StringUtils.isEmpty(code) || !code.equals(cde)){
+		if(StringUtils.isEmpty(code) || !code.toUpperCase().equals(cde)){
 			return JSONResult.errorMsg("验证码不一致,请重新输入");
 		}
 
