@@ -5,18 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCache;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@DependsOn({"cacheConfig"})
 public class CaffeineCacheUtil
 {
 	@Autowired
-	private CacheManager caffeineCacheManager;
+	private static CacheManager caffeineCacheManager;
 
 	/**
 	 * 提取缓存的值
@@ -25,8 +23,7 @@ public class CaffeineCacheUtil
 	 * @param key
 	 * @return
 	 */
-	public Object getCacheValue(String cacheName, Object key) {
-
+	public static Object getCacheValue(String cacheName, Object key) {
 		if (null == caffeineCacheManager.getCache(cacheName)) {
 			return null;
 		}
@@ -48,7 +45,7 @@ public class CaffeineCacheUtil
 	 * @param key
 	 * @param value
 	 */
-	public void putCache(String cacheName, Object key, Object value) {
+	public static void putCache(String cacheName, Object key, Object value) {
 
 		Cache cache = caffeineCacheManager.getCache(cacheName);
 
@@ -66,9 +63,8 @@ public class CaffeineCacheUtil
 	 *
 	 * @return
 	 */
-	public Collection<String> listCacheNames() {
-		return caffeineCacheManager.getCacheNames();
-	}
+	public static Collection<String> listCacheNames() {
+		return caffeineCacheManager.getCacheNames();	}
 
 	/**
 	 * 查询缓存性能参数
@@ -97,7 +93,7 @@ public class CaffeineCacheUtil
 	 * @param cacheName
 	 * @param key
 	 */
-	public void evictCache(String cacheName, Object key) {
+	public static void evictCache(String cacheName, Object key) {
 
 		Cache cache = caffeineCacheManager.getCache(cacheName);
 
@@ -115,7 +111,7 @@ public class CaffeineCacheUtil
 	 *
 	 * @param cacheName
 	 */
-	public void clearCaches(String cacheName) {
+	public static void clearCaches(String cacheName) {
 
 		Cache cache = caffeineCacheManager.getCache(cacheName);
 

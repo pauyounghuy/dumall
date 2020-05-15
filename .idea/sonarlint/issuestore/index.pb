@@ -169,12 +169,6 @@ f
 6mall/src/main/java/com/byh/mall/utils/RandomUtils.java,f\d\fdff2a9fa922267f0cb9e43dbdaf7390159e4d20
 l
 <mall/src/main/java/com/byh/mall/utils/CaffeineCacheUtil.java,e\1\e1f67e1c289696cdee0ec831fed1179b2a31e27c
-m
-=mall/src/main/java/com/byh/mall/config/YamlConfigFactory.java,e\9\e9f8156d4be4b789590bb168b9dadc518c366029
-m
-=mall/src/main/java/com/byh/mall/config/CacheClientConfig.java,3\c\3c2953093f99db9ddc548ad6c15574c5b9548e2d
-k
-;mall/src/main/java/com/byh/mall/config/CacheProperties.java,d\c\dcd0649c9263b1a82e05eb864f02f70acc0dfe4b
 s
 Cmall/src/main/java/com/byh/mall/exception/NoSuchCacheException.java,3\2\3224e5ea0a06aa70b22d04a4d6b1bc615899df0b
 g

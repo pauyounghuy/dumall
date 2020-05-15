@@ -2,7 +2,6 @@ package com.byh.mall.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hazelcast.core.HazelcastInstance;
 import org.springframework.util.StringUtils;
-
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +19,9 @@ public class VerifyCodeUtils
 	private int stringNum = 4;// 随机产生字符数量
 
 	private Random random = new Random();
+
+	private static String cacheName="beanCache";
+		//CaffeineCacheUtil.listCacheNames().stream().findFirst().get();
 
 	/**
 	 * 获得字体
@@ -67,8 +69,13 @@ public class VerifyCodeUtils
 //		session.setAttribute(RANDOMKEY, randomString);
 //		//设置失效时间5分钟
 //		session.setMaxInactiveInterval(300);
+
 		hazelcast.getMap("hazelcast-instance").remove(RANDOMKEY);
 		hazelcast.getMap("hazelcast-instance").put(RANDOMKEY, randomString);
+
+//		CaffeineCacheUtil.evictCache(cacheName, RANDOMKEY);
+//		CaffeineCacheUtil.putCache(cacheName, RANDOMKEY,randomString);
+
 		g.dispose();
 		try {
 			// 将内存中的图片通过流动形式输出到客户端
@@ -120,8 +127,8 @@ public class VerifyCodeUtils
 			result = result.trim().toUpperCase();
 			//获取生成的验证码
 			//String verifyCodeExpected = (String) request.getSession().getAttribute(RANDOMKEY);
-
 			Object object=hazelcast.getMap("hazelcast-instance").get(RANDOMKEY);
+//			Object object= CaffeineCacheUtil.getCacheValue(cacheName,RANDOMKEY);
 			ObjectMapper om = new ObjectMapper();
 			String verifyCodeExpected=om.convertValue(object, String.class);
 

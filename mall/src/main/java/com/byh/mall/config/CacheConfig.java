@@ -1,98 +1,79 @@
 package com.byh.mall.config;
-import com.github.benmanes.caffeine.cache.Cache;
+
+
+import com.github.benmanes.caffeine.cache.AsyncLoadingCache;
+import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.LoadingCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCache;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
-@Configuration
-@ConditionalOnProperty(prefix = "cache.caffeine-plus", value = "enabled")
+/**
+ * 初始化缓存管理器
+ *
+ * @author: wangyong
+ * @date: 2020/1/9
+ * <p>
+ * @description:
+ */
+
 @Slf4j
-public class CacheConfig
-{
-	@Autowired
-	private CacheProperties cacheProperties;
+@Configuration
+public class CacheConfig {
 
-	/**
-	 * 创建基于Caffeine的Cache Manager
-	 *
-	 * @return
-	 */
-	@Bean
-	@Primary
-	public CacheManager caffeineCacheManager() {
+    /**
+     * 创建基于Caffeine的Cache Manager
+     * @return
+     */
+    @Bean
+    public CacheManager caffeineCacheManager(){
+        Caffeine<Object, Object> caffeine = Caffeine.newBuilder()
+                        .initialCapacity(16)
+                        .maximumSize(512)
+                        .expireAfterWrite(300, TimeUnit.SECONDS )
+                        .refreshAfterWrite(100, TimeUnit.SECONDS)
+                .recordStats()
+                .removalListener((key, value, cause) -> log.debug("缓存键 [{}], 缓存值 [{}] 被淘汰的原因为: [{}]", key, value, cause));
 
-		log.debug("caffeine-plus create cacheManager");
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager();
+        cacheManager.setAllowNullValues(true);
+        cacheManager.setCaffeine(caffeine);
+        cacheManager.setCacheLoader(createCacheLoader());
+        cacheManager.setCacheNames(getNames());
+        return cacheManager;
+    }
 
-		SimpleCacheManager cacheManager = new SimpleCacheManager();
-		Map<String, CaffeineCache> cacheMap = new HashMap();
+    @Bean
+    public CacheLoader<Object, Object> createCacheLoader() {
+        return new CacheLoader<Object, Object>() {
+            @Override
+            public Object load(Object key) throws Exception {
+                log.debug("cacheLoader load : {}", key);
+                return null;
+            }
+        };
+    }
 
-		// 设置全局配置的本地缓存
-		List<String> globalCacheNames = cacheProperties.getCacheName();
-		if (null != globalCacheNames && !globalCacheNames.isEmpty()) {
-			addCacheObject(cacheMap, globalCacheNames, cacheProperties.getSpec());
-		}
+    private Object load(Object key) throws Exception {
+        log.debug("cacheLoader load : {}", key);
+        return null;
+    }
 
-		// 设置自定义属性缓存, 可以覆盖全局缓存
-		List<CacheProperties.Config> configs = cacheProperties.getConfigs();
-		if (null != configs && !configs.isEmpty()) {
-			for (CacheProperties.Config config : configs) {
-				List<String> cacheNames = config.getCacheName();
-				if (null == cacheNames || cacheNames.isEmpty()) {
-					continue;
-				}
-				addCacheObject(cacheMap, cacheNames, config.getSpec());
-			}
-		}
-		// 加入到缓存管理器进行管理
-		cacheManager.setCaches(cacheMap.values());
-
-		return cacheManager;
-	}
-
-	/**
-	 * 添加缓存对象
-	 * <p>
-	 * 不支持refreshAfterWrite参数
-	 * refreshAfterWrite参数需要配合cacheLoader使用，需要自定义cacheManager
-	 *
-	 * @param cacheMap
-	 * @param cacheNames
-	 * @param caffeineSpec
-	 */
-	private void addCacheObject(Map<String, CaffeineCache> cacheMap, List<String> cacheNames, String caffeineSpec) {
-
-		for (String cacheName : cacheNames) {
-
-			/**
-			 * 初始化caffeine对象
-			 */
-			Caffeine<Object, Object> caffeine = Caffeine.from(caffeineSpec).recordStats();
-
-			/**
-			 * 监听缓存淘汰原因
-			 */
-			caffeine.removalListener((key, value, cause) -> log.debug("缓存键 [{}], 缓存值 [{}] 被淘汰的原因为: [{}]", key, value, cause));
-
-			/**
-			 * 构建caffeine缓存
-			 */
-			Cache<Object, Object> cache = caffeine.build();
-			CaffeineCache caffeineCache = new CaffeineCache(cacheName, cache);
-
-			// 覆盖添加
-			cacheMap.put(cacheName, caffeineCache);
-		}
-
-	}
+    private static List<String> getNames(){
+        List<String> names = new ArrayList<>(2);
+        names.add("beanCache");
+        names.add("sessionCache");
+        return names;
+    }
 
 }
