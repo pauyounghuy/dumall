@@ -38,7 +38,6 @@ public class UserController extends BaseController
 	private GoodsService goodsService;
 	@Autowired
 	private VerificationCodeService verificationCodeService;
-
 	@Autowired
 	private HazelcastInstance hazelcast;
 	@Autowired

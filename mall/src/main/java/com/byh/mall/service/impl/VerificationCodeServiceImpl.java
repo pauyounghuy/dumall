@@ -4,9 +4,13 @@ import com.byh.mall.dao.VerificationCodeDAO;
 import com.byh.mall.entity.VerificationCode;
 import com.byh.mall.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class VerificationCodeServiceImpl extends BaseService implements VerificationCodeService
 {
 	@Autowired

@@ -3,16 +3,22 @@ import com.byh.mall.base.BaseDAO;
 import com.byh.mall.dao.VerificationCodeDAO;
 import com.byh.mall.dao.mapper.VerificationCodeMapper;
 import com.byh.mall.entity.VerificationCode;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.thymeleaf.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
+@Repository
 public class VerificationCodeDAOImpl extends BaseDAO implements VerificationCodeDAO
 {
 	@Autowired
 	VerificationCodeMapper verificationCodeMapper;
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
+
 
 	@Override
 	public VerificationCode getVerificationCode(Long id)
