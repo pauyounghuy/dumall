@@ -1,4 +1,6 @@
 package com.byh.mall.utils;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hazelcast.core.HazelcastInstance;
 import org.springframework.util.StringUtils;
 
 import javax.imageio.ImageIO;
@@ -43,7 +45,7 @@ public class VerifyCodeUtils
 	/**
 	 * 生成随机图片
 	 */
-	public void getRandcode(HttpServletRequest request, HttpServletResponse response) {
+	public void getRandcode(HttpServletRequest request, HttpServletResponse response, HazelcastInstance hazelcast) {
 		HttpSession session = request.getSession();
 		// BufferedImage类是具有缓冲区的Image类,Image类是用于描述图像信息的类
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
@@ -61,10 +63,11 @@ public class VerifyCodeUtils
 			randomString = drowString(g, randomString, i);
 		}
 		//将生成的随机字符串保存到session中
-		session.removeAttribute(RANDOMKEY);
-		session.setAttribute(RANDOMKEY, randomString);
-		//设置失效时间1分钟
-		session.setMaxInactiveInterval(60);
+//		session.removeAttribute(RANDOMKEY);
+//		session.setAttribute(RANDOMKEY, randomString);
+//		//设置失效时间5分钟
+//		session.setMaxInactiveInterval(300);
+		hazelcast.getMap("hazelcast-instance").put(RANDOMKEY, randomString);
 		g.dispose();
 		try {
 			// 将内存中的图片通过流动形式输出到客户端
@@ -107,24 +110,37 @@ public class VerifyCodeUtils
 	}
 
 	/**
-	 * 验证码校验
+	 * 验证码校验  0  不一致  1  成功  2失效  3传入失败
 	 */
-	public static boolean checkVerifyCode(HttpServletRequest request) {
+	public static int checkVerifyCode(HttpServletRequest request,HazelcastInstance hazelcast) {
 		//获取用户输入的验证码
-		String result = request.getParameter("verifyCode");
+		String result = request.getParameter("code");
 		if(!StringUtils.isEmpty(result)) {
 			result = result.trim().toUpperCase();
 			//获取生成的验证码
-			String verifyCodeExpected = (String) request.getSession().getAttribute(RANDOMKEY);
+			//String verifyCodeExpected = (String) request.getSession().getAttribute(RANDOMKEY);
+
+			Object object=hazelcast.getMap("hazelcast-instance").get(RANDOMKEY);
+			ObjectMapper om = new ObjectMapper();
+			String verifyCodeExpected=om.convertValue(object, String.class);
+
 			if (!StringUtils.isEmpty(verifyCodeExpected))
 			{
 				verifyCodeExpected = verifyCodeExpected.toUpperCase().trim();
 				if(result.equals(verifyCodeExpected)) {
-					return true;
+					return 1;
+				}
+				else
+				{
+					return 0;
 				}
 			}
+			else
+			{
+				return 2;
+			}
 		}
-		return false;
+		return 3;
 	}
 
 

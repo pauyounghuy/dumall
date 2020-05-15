@@ -56,12 +56,16 @@ public class IndexController extends BaseController
 
 		if(ObjectUtils.isEmpty(user)){
 			//校验验证码
-//			if(StringUtils.isEmpty(code)){
-//				return JSONResult.errorMsg("验证码不能为空");
-//			}
-//			if(!VerifyCodeUtils.checkVerifyCode(request)){
-//				return JSONResult.errorMsg("验证码不一致或已失效");
-//			}
+			int bool=VerifyCodeUtils.checkVerifyCode(request,hazelcast);
+			if(bool==0){
+				return JSONResult.errorMsg("验证码不一致");
+			}
+			if(bool==2){
+				return JSONResult.errorMsg("验证码已失效");
+			}
+			if (bool==3){
+				return JSONResult.errorMsg("验证码不能为空");
+			}
 
 			//获取用户数据
 			user = userService.checkUsername(username);

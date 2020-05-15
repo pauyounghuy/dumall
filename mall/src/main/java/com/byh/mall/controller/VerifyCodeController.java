@@ -1,5 +1,7 @@
 package com.byh.mall.controller;
 import com.byh.mall.utils.VerifyCodeUtils;
+import com.hazelcast.core.HazelcastInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,6 +14,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/code")
 public class VerifyCodeController
 {
+	@Autowired
+	private HazelcastInstance hazelcast;
+
 	@RequestMapping("/get")
 	public void createImg(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
@@ -23,6 +28,6 @@ public class VerifyCodeController
 		response.setContentType("image/jpeg");
 
 		//输出验证码图片
-		new VerifyCodeUtils().getRandcode(request, response);
+		new VerifyCodeUtils().getRandcode(request, response,hazelcast);
 	}
 }
