@@ -67,6 +67,7 @@ public class VerifyCodeUtils
 //		session.setAttribute(RANDOMKEY, randomString);
 //		//设置失效时间5分钟
 //		session.setMaxInactiveInterval(300);
+		hazelcast.getMap("hazelcast-instance").remove(RANDOMKEY);
 		hazelcast.getMap("hazelcast-instance").put(RANDOMKEY, randomString);
 		g.dispose();
 		try {
