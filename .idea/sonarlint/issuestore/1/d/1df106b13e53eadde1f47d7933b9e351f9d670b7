@@ -1,22 +1,21 @@
 
-T
-java:S2629#"7Use the built-in formatting to construct this argument.(¥–Ù±8œ„„™ .
-k
-java:S1192)"IDefine a constant instead of duplicating this literal "username" 6 times.(ø·ðþÿÿÿÿ8·ãç .
+a
+java:S3752†">Add a "method" parameter to this "@RequestMapping" annotation.(ÓÃÁºøÿÿÿÿ8ì¯ä°¡.
 u
 java:S11926"SDefine a constant instead of duplicating this literal "hazelcast-instance" 3 times.(„¾·Ìùÿÿÿÿ8Ç€°š .
 Z
-java:S3752[">Add a "method" parameter to this "@RequestMapping" annotation.(ª£¡8›Â«‰¡.
-X	java:S125;"<This block of commented-out lines of code should be removed.(øÈ±ñ8 ª¶ê .
-^
-java:S3457#"AFormat specifiers should be used instead of string concatenation.(¥–Ù±8œ„„™ .
-^	java:S125¦"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8Á„å•¡.
-a
-java:S3752‚">Add a "method" parameter to this "@RequestMapping" annotation.(ÓÃÁºøÿÿÿÿ8Ï¶ñ•¡.
+java:S3752_">Add a "method" parameter to this "@RequestMapping" annotation.(ª£¡8ì¯ä°¡.
+D
+java:S1172š"&Remove these unused method parameters.(òá»Â8ì¯ä°¡.
+k
+java:S1192)"IDefine a constant instead of duplicating this literal "username" 6 times.(ø·ðþÿÿÿÿ8·ãç .
 [
 java:S3752!">Add a "method" parameter to this "@RequestMapping" annotation.(ô¸èÉ8œ„„™ .
+^
+java:S3457#"AFormat specifiers should be used instead of string concatenation.(¥–Ù±8œ„„™ .
 t
-java:S3776""RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(í€€Êþÿÿÿÿ8ÓÈŽ¾ .
-D
-java:S1172–"&Remove these unused method parameters.(òá»Â8Ï¶ñ•¡.
-^	java:S125˜"<This block of commented-out lines of code should be removed.(Ç¬–Èùÿÿÿÿ8Ï¶ñ•¡.
+java:S3776""RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(í€€Êþÿÿÿÿ8ÓÈŽ¾ .
+^	java:S125ª"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8ì¯ä°¡.
+T
+java:S2629#"7Use the built-in formatting to construct this argument.(¥–Ù±8œ„„™ .
+^	java:S125œ"<This block of commented-out lines of code should be removed.(Ç¬–Èùÿÿÿÿ8ì¯ä°¡.
