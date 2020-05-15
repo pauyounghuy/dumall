@@ -19,7 +19,7 @@
 ````
 ##### 5.修改用户信息：localhost:8092/user/update
 ````json
-请求：{"id":"1","username":"byh","password":"123","name":"zxc","mobile":"123456","qq":"123","email":"qq@123.com"}
+请求：{"id":"1","userName":"byh","password":"123","name":"zxc","mobile":"123456","qq":"123","email":"qq@123.com"}
 响应：
 ````
 ##### 6.根据用户主键获取地址：localhost:8092/address/get

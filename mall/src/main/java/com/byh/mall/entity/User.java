@@ -22,7 +22,7 @@ public class User extends BaseEntity
 
 	//用户名
 	@Column(name="USERNAME")
-	@JsonProperty("userName")
+	@JsonProperty("username")
 	@Field("userName")
 	private String username;
 
