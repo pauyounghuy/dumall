@@ -92,6 +92,32 @@ public class UserController extends BaseController
 	@RequestMapping("/update")
 	public JSONResult update(HttpServletRequest request, User user)
 	{
+		String username=user.getUsername();
+		String mobile=user.getMobile();
+		String email=user.getEmail();
+
+		if (!StringUtils.isEmpty(username)){
+			user=userService.checkUsername(username);
+			if (!ObjectUtils.isEmpty(user))
+			{
+				return JSONResult.errorMsg("用户名已存在");
+			}
+		}
+		if (!StringUtils.isEmpty(email)){
+			user = userService.checkUsername(email);
+			if (!ObjectUtils.isEmpty(user))
+			{
+				return JSONResult.errorMsg("邮箱已存在");
+			}
+		}
+		if (!StringUtils.isEmpty(mobile)){
+			user=userService.checkUsername(mobile);
+			if (!ObjectUtils.isEmpty(user))
+			{
+				return JSONResult.errorMsg("手机号已存在");
+			}
+		}
+
 		user.setUpdateDate(DateUtils.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss"));
 		userService.updateUser(user);
 		return JSONResult.ok();
