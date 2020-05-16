@@ -34,7 +34,7 @@ public class TestController extends BaseController
 	}
 	@RequestMapping("/set")
 	public JSONResult set(){
-		return JSONResult.errorMsg(super.code("222"));
+		return JSONResult.errorMsg(super.code2("222"));
 	}
 
 }

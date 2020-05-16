@@ -173,3 +173,5 @@ s
 Cmall/src/main/java/com/byh/mall/exception/NoSuchCacheException.java,3\2\3224e5ea0a06aa70b22d04a4d6b1bc615899df0b
 g
 7mall/src/main/java/com/byh/mall/config/CacheConfig.java,d\5\d5a803b925dcefc4a7b2e84f48e718b68bec1457
+m
+=mall/src/main/java/com/byh/mall/utils/ConfigurationUtils.java,c\2\c263af13ea1756426d01aba772769f3ace99b20d
