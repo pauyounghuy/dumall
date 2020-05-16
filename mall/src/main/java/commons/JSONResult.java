@@ -35,11 +35,11 @@ public class JSONResult {
     public static JSONResult ok() {
         return new JSONResult(null);
     }
-    
+
     public static JSONResult errorMsg(String msg) {
         return new JSONResult(500, msg, null);
     }
-    
+
     public static JSONResult errorMap(Object data) {
         return new JSONResult(501, "error", data);
     }
