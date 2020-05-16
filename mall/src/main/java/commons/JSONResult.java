@@ -53,7 +53,6 @@ public class JSONResult {
     }
 
     public JSONResult() {
-
     }
 
     public JSONResult(Integer status, String msg, Object data) {
