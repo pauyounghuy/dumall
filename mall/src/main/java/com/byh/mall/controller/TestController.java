@@ -2,7 +2,7 @@ package com.byh.mall.controller;
 import com.byh.mall.base.BaseController;
 import com.byh.mall.mail.MailService;
 import com.byh.mall.utils.ConfigurationUtils;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -26,7 +26,7 @@ public class TestController extends BaseController
 
 	@RequestMapping("/get")
 	public JSONResult get(){
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	@RequestMapping("/get2")
 	public String getOne(){
@@ -34,7 +34,7 @@ public class TestController extends BaseController
 	}
 	@RequestMapping("/set")
 	public JSONResult set(){
-		return JSONResult.errorMsg(super.code2("222"));
+		return jsonResult.errorCode("12345");
 	}
 
 }

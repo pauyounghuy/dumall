@@ -6,7 +6,7 @@ import com.byh.mall.service.VisitorService;
 import com.byh.mall.utils.VerifyCodeUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hazelcast.core.HazelcastInstance;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class IndexController extends BaseController
 
 		if (StringUtils.isEmpty(username)){
 			log.info("用户名不能为空");
-			return JSONResult.errorMsg("用户名不能为空");
+			return jsonResult.errorMsg("100000");
 		}
 
 		ObjectMapper om = new ObjectMapper();
@@ -58,24 +58,24 @@ public class IndexController extends BaseController
 			//校验验证码
 			int bool=VerifyCodeUtils.checkVerifyCode(request,hazelcast);
 			if(bool==0){
-				return JSONResult.errorMsg("验证码不一致");
+				return jsonResult.errorMsg("000006");
 			}
 			if(bool==2){
-				return JSONResult.errorMsg("验证码已失效");
+				return jsonResult.errorMsg("000005");
 			}
 			if (bool==3){
-				return JSONResult.errorMsg("验证码不能为空");
+				return jsonResult.errorMsg("000007");
 			}
 
 			//获取用户数据
 			user = userService.checkUsername(username);
 			if(ObjectUtils.isEmpty(user)){
 				log.info("用户名不存在");
-				return JSONResult.errorMsg("用户名不存在");
+				return jsonResult.errorMsg("000001");
 			}
 			else{  //存在用户名,存入缓存
 				if (!password.equals(user.getPassword())){
-					return JSONResult.errorMsg("密码错误，请重新输入");
+					return jsonResult.errorMsg("000000");
 				}
 
 				hazelcast.getMap("hazelcast-instance").putAsync("username", user);
@@ -89,45 +89,45 @@ public class IndexController extends BaseController
 		//mongo记录登录
 		addRecord(username,ip);
 
-		return JSONResult.ok(user);
+		return jsonResult.ok(user);
 	}
 	//注册
 	@RequestMapping("/register")
 	public JSONResult register(String username,String password,String pwd,String name,String mobile,String qq,String email){
 		if(!password.equals(pwd)){
 			log.info("前后密码不一致");
-			return JSONResult.errorMsg("前后密码不一致");
+			return jsonResult.errorMsg("100001");
 		}
 		if(StringUtils.isEmpty(username) && StringUtils.isEmpty(mobile) && StringUtils.isEmpty(email)){
-			return JSONResult.errorMsg("用户名 或 邮箱 或 手机号 至少需填一项");
+			return jsonResult.errorMsg("100010");
 		}
 		User user=null;
 		if (!StringUtils.isEmpty(username)){
 			user=userService.checkUsername(username);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("用户名已存在");
+				return jsonResult.errorMsg("000002");
 			}
 		}
 		if (!StringUtils.isEmpty(email)){
 			user = userService.checkUsername(email);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("邮箱已存在");
+				return jsonResult.errorMsg("000004");
 			}
 		}
 		if (!StringUtils.isEmpty(mobile)){
 			user=userService.checkUsername(mobile);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("手机号已存在");
+				return jsonResult.errorMsg("000003");
 			}
 		}
 
 		user = new User(username, name, password, mobile, email,qq);
 		userService.saveUser(user);
 
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 
 	//退出
@@ -149,7 +149,7 @@ public class IndexController extends BaseController
 		//mongo记录时长
 		addRecord(username,null);
 
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	private void addRecord(String username,String ip)
 	{

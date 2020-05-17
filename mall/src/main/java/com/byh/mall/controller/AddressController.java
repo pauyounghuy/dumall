@@ -4,7 +4,7 @@ import com.byh.mall.entity.Address;
 import com.byh.mall.service.AddressService;
 import com.byh.mall.vo.SearchVO;
 import com.github.pagehelper.PageInfo;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,14 +25,14 @@ public class AddressController extends BaseController
 	@RequestMapping("/get")
 	public JSONResult getAddress(HttpServletRequest request, Long userKey){
 		List<Address> adsList = addressService.getAddress(userKey);
-		return JSONResult.ok(adsList);
+		return jsonResult.ok(adsList);
 	}
 	//多条件 分页查
 	@RequestMapping("/getByPageCondition")
 	public JSONResult getAddressByCondition(HttpServletRequest request, SearchVO searchVO,int pageNum, int pageSize)
 	{
 		PageInfo<Address> adsPage = addressService.getAddressByPage(searchVO, pageNum, pageSize);
-		return JSONResult.ok(adsPage);
+		return jsonResult.ok(adsPage);
 	}
 	//增
 	@RequestMapping("/add")
@@ -47,7 +47,7 @@ public class AddressController extends BaseController
 			}
 		}
 		addressService.saveAddress(address);
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	//改
 	@RequestMapping("/update")
@@ -63,14 +63,14 @@ public class AddressController extends BaseController
 			}
 		}
 		addressService.updateAddress(address);
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	//删
 	@RequestMapping("/delete")
 	public JSONResult delete(HttpServletRequest request,Long id)
 	{
 		addressService.deleteAddress(id);
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	//改状态
 	@RequestMapping("/updateStatus")
@@ -86,7 +86,7 @@ public class AddressController extends BaseController
 			}
 			addressService.updateAddress(address);
 		}
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 
 }

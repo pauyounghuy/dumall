@@ -9,7 +9,7 @@ import com.byh.mall.vo.OrderVO;
 import com.byh.mall.vo.UserInfoVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hazelcast.core.HazelcastInstance;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -84,7 +84,7 @@ public class UserController extends BaseController
 			}
 		}
 		userInfoVO=new UserInfoVO(user, addressList, cvlist, ovlist);
-		return JSONResult.ok(userInfoVO);
+		return jsonResult.ok(userInfoVO);
 	}
 
 
@@ -100,27 +100,30 @@ public class UserController extends BaseController
 			user=userService.checkUsername(username);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("用户名已存在");
+				//return jsonResult.errorMsg("邮箱已存在");
+				return jsonResult.errorCode("000002");
 			}
 		}
 		if (!StringUtils.isEmpty(email)){
 			user = userService.checkUsername(email);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("邮箱已存在");
+				//return jsonResult.errorMsg("邮箱已存在");
+				return jsonResult.errorCode("000004");
 			}
 		}
 		if (!StringUtils.isEmpty(mobile)){
 			user=userService.checkUsername(mobile);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return JSONResult.errorMsg("手机号已存在");
+				//return jsonResult.errorMsg("手机号已存在");
+				return jsonResult.errorCode("000003");
 			}
 		}
 
 		user.setUpdateDate(DateUtils.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss"));
 		userService.updateUser(user);
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 
 	//发送邮件确认
@@ -129,10 +132,12 @@ public class UserController extends BaseController
 	{
 		User user = userService.getKey(userKey);
 		if(user== null){
-			return JSONResult.errorMsg("用户不存在");
+			//return jsonResult.errorMsg("用户不存在");
+			return jsonResult.errorCode("000000");
 		}
 		//生成验证码
 		String code= RandomUtils.random(6).toUpperCase();
+		hazelcast.getMap("hazelcast-instance").removeAsync(userKey);
 		hazelcast.getMap("hazelcast-instance").putAsync(userKey, code);
 		VerificationCode verificationCode = new VerificationCode();
 		SimpleMailMessage sm=new SimpleMailMessage();
@@ -152,7 +157,7 @@ public class UserController extends BaseController
 
 		verificationCodeService.saveVerificationCode(verificationCode);
 
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 	//验证邮箱
 	@RequestMapping("/verifyEmail")
@@ -160,13 +165,15 @@ public class UserController extends BaseController
 	{
 		Object obj = hazelcast.getMap("hazelcast-instance").get(userKey);
 		if (ObjectUtils.isEmpty(obj)){
-			return JSONResult.errorMsg("验证码已失效");
+			//return jsonResult.errorMsg("验证码已失效");
+			return jsonResult.errorCode("000005");
 		}
 		ObjectMapper om = new ObjectMapper();
 		String cde=om.convertValue(obj, String.class);
 
 		if(StringUtils.isEmpty(code) || !code.toUpperCase().equals(cde)){
-			return JSONResult.errorMsg("验证码不一致,请重新输入");
+			//return jsonResult.errorMsg("验证码不一致,请重新输入");
+			return jsonResult.errorCode("000006");
 		}
 
 		User user =userService.getKey(userKey);
@@ -175,7 +182,7 @@ public class UserController extends BaseController
 		userService.updateUser(user);
 
 		hazelcast.getMap("hazelcast-instance").removeAsync(userKey);
-		return JSONResult.ok();
+		return jsonResult.ok();
 	}
 
 }

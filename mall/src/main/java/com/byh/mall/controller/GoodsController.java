@@ -4,7 +4,7 @@ import com.byh.mall.entity.Goods;
 import com.byh.mall.service.GoodsService;
 import com.byh.mall.vo.SearchVO;
 import com.github.pagehelper.PageInfo;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ public class GoodsController extends BaseController
 	public JSONResult getAddressByCondition(HttpServletRequest request, SearchVO searchVO, int pageNum, int pageSize)
 	{
 		PageInfo<Goods> gdsPage = goodsService.getGoodsByPage(searchVO, pageNum, pageSize);
-		return JSONResult.ok(gdsPage);
+		return jsonResult.ok(gdsPage);
 	}
 
 }

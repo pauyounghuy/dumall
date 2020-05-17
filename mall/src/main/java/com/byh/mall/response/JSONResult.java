@@ -1,4 +1,13 @@
-package commons;
+package com.byh.mall.response;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.byh.mall.utils.ConfigurationUtils;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.io.File;
 
 /**
  * @Description: 自定义响应数据结构
@@ -11,7 +20,15 @@ package commons;
  * 				502：拦截器拦截到用户token出错
  * 				555：异常抛出信息
  */
+
+@Component
+@JsonIgnoreProperties(value={"config"})
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)  为空不返回
 public class JSONResult {
+
+    @Value("${validator.config}")
+    @JSONField(serialize=false)
+    private String config;
 
     // 响应业务状态
     private Integer status;
@@ -24,31 +41,37 @@ public class JSONResult {
     
     private String ok;	// 不使用
 
-    public static JSONResult build(Integer status, String msg, Object data) {
+    public JSONResult build(Integer status, String msg, Object data) {
         return new JSONResult(status, msg, data);
     }
 
-    public static JSONResult ok(Object data) {
+    public JSONResult ok(Object data) {
         return new JSONResult(data);
     }
 
-    public static JSONResult ok() {
+    public JSONResult ok() {
         return new JSONResult(null);
     }
 
-    public static JSONResult errorMsg(String msg) {
+    public JSONResult errorMsg(String msg) {
         return new JSONResult(500, msg, null);
     }
-
-    public static JSONResult errorMap(Object data) {
+    public JSONResult errorCode(String code){
+        if(StringUtils.isEmpty(code)){
+            return new JSONResult(500, "查无关联统一提示文件", null);
+        }
+        String value =ConfigurationUtils.getValue(code, new File(config));
+        return new JSONResult(500, value, null);
+    }
+    public JSONResult errorMap(Object data) {
         return new JSONResult(501, "error", data);
     }
     
-    public static JSONResult errorTokenMsg(String msg) {
+    public JSONResult errorTokenMsg(String msg) {
         return new JSONResult(502, msg, null);
     }
     
-    public static JSONResult errorException(String msg) {
+    public JSONResult errorException(String msg) {
         return new JSONResult(555, msg, null);
     }
 
@@ -102,5 +125,12 @@ public class JSONResult {
 	public void setOk(String ok) {
 		this.ok = ok;
 	}
-
+    public String getConfig()
+    {
+        return config;
+    }
+    public void setConfig(String config)
+    {
+        this.config = config;
+    }
 }

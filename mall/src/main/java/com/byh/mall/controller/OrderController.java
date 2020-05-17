@@ -4,7 +4,7 @@ import com.byh.mall.entity.Order;
 import com.byh.mall.service.OrderService;
 import com.byh.mall.vo.SearchVO;
 import com.github.pagehelper.PageInfo;
-import commons.JSONResult;
+import com.byh.mall.response.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ public class OrderController extends BaseController
 	public JSONResult getOrderByCondition(HttpServletRequest request, SearchVO searchVO, int pageNum, int pageSize)
 	{
 		PageInfo<Order> gdsPage = orderService.getOrderByPage(searchVO, pageNum, pageSize);
-		return JSONResult.ok(gdsPage);
+		return jsonResult.ok(gdsPage);
 	}
 
 
