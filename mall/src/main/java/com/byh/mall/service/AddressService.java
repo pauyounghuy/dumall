@@ -9,6 +9,7 @@ public interface AddressService
 {
 	PageInfo<Address> getAddressByPage(SearchVO searchVO, int pageNum, int pageSize);
 	List<Address> getAddress(Long userKey);
+	Address getAddressOne(Long id);
 	void saveAddress(Address address);
 	void updateAddress(Address address);
 	void deleteAddress(Long id);

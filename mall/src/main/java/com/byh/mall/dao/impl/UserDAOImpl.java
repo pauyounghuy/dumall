@@ -13,8 +13,8 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 {
 	@Autowired
 	private UserMapper userMapper;
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
+
+
 	@Override
 	public User getKey(Long id)
 	{

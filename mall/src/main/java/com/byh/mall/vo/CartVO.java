@@ -2,20 +2,20 @@ package com.byh.mall.vo;
 public class CartVO
 {
 	private String productName;
-	private String carttId;
+	private String cartId;
 	private String productId;
 	private String productImage;
 	private String favorPrice;
 	private int qty;
 	private int isChecked;
 
-	public String getCarttId()
+	public String getCartId()
 	{
-		return carttId;
+		return cartId;
 	}
-	public void setCarttId(String carttId)
+	public void setCartId(String cartId)
 	{
-		this.carttId = carttId;
+		this.cartId = cartId;
 	}
 	public String getProductName()
 	{

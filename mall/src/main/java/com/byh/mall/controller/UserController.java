@@ -57,10 +57,10 @@ public class UserController extends BaseController
 		for(Cart cart: cartlist)
 		{
 			CartVO cartVO=new CartVO();
-			Goods goods = goodsService.getGoodsByKey(cart.getGid());
+			Goods goods = goodsService.getGoods(cart.getGid());
 			cartVO.setFavorPrice(goods.getFavorPrice().toString());
 			cartVO.setIsChecked(cart.getIsChecked());
-			cartVO.setCarttId(cart.getId().toString());
+			cartVO.setCartId(cart.getId().toString());
 			cartVO.setProductId(goods.getId().toString());
 			cartVO.setProductImage(goods.getProductImage());
 			cartVO.setProductName(goods.getName());
@@ -76,7 +76,7 @@ public class UserController extends BaseController
 				glist= new ArrayList<>();
 				List<OrderGoods> oglist=orderService.getOgList(order.getId());
 				for(OrderGoods orderGoods:oglist){
-					Goods goods=goodsService.getGoodsByKey(orderGoods.getGid());
+					Goods goods=goodsService.getGoods(orderGoods.getGid());
 					glist.add(goods);
 				}
 				OrderVO ov = new OrderVO(order.getId().toString(),order.getStatus(),order.getCreateDate(),order.getCompleteDate(),address,glist);

@@ -24,8 +24,23 @@ public class GoodsServiceImpl extends BaseService implements GoodsService
 		return goodsDAO.getGoodsByPage(searchVO, pageNum, pageSize);
 	}
 	@Override
-	public Goods getGoodsByKey(Long id)
+	public Goods getGoods(Long id)
 	{
-		return goodsDAO.getGoodsByKey(id);
+		return goodsDAO.getGoods(id);
+	}
+	@Override
+	public void saveGoods(Goods goods)
+	{
+		goodsDAO.saveGoods(goods);
+	}
+	@Override
+	public void updateGoods(Goods goods)
+	{
+		goodsDAO.updateGoods(goods);
+	}
+	@Override
+	public void deleteGoods(Long id)
+	{
+		goodsDAO.deleteGoods(id);
 	}
 }

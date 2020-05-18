@@ -42,4 +42,44 @@ public class OrderServiceImpl extends BaseService implements OrderService
 	{
 		return orderDAO.getOrderByCondition(searchVO, pageNum, pageSize);
 	}
+	@Override
+	public void saveOrder(Order order)
+	{
+		orderDAO.saveOrder(order);
+	}
+	@Override
+	public void deleteOrder(Long id)
+	{
+		orderDAO.deleteOrder(id);
+	}
+	@Override
+	public void deleteOrder(Long adsKey, Long userKey)
+	{
+		orderDAO.deleteOrder(adsKey, userKey);
+	}
+	@Override
+	public void saveOrderGoods(OrderGoods orderGoods)
+	{
+		orderGoodsDAO.saveOrderGoods(orderGoods);
+	}
+	@Override
+	public void deleteOrderGoods(Long id)
+	{
+		orderGoodsDAO.deleteOrderGoods(id);
+	}
+	@Override
+	public void deleteOrderGoods(Long oid, Long gid)
+	{
+		orderGoodsDAO.deleteOrderGoods(oid, gid);
+	}
+	@Override
+	public OrderGoods getOrderOne(Long id)
+	{
+		return orderGoodsDAO.getOrderOne(id);
+	}
+	@Override
+	public OrderGoods getOrderOne(Long oid, Long gid)
+	{
+		return orderGoodsDAO.getOrderOne(oid, gid);
+	}
 }

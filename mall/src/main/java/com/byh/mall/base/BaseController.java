@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class BaseController extends CommonBase
 {
 	@Autowired
-	public transient JSONResult jsonResult;
+	public JSONResult jsonResult;
 
 //	@Autowired
 //	private transient Environment environment;

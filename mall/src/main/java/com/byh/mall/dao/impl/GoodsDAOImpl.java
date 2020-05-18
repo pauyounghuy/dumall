@@ -4,6 +4,7 @@ import com.byh.mall.dao.GoodsDAO;
 import com.byh.mall.dao.mapper.GoodsMapper;
 import com.byh.mall.entity.Address;
 import com.byh.mall.entity.Goods;
+import com.byh.mall.entity.Order;
 import com.byh.mall.vo.SearchVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,8 +20,6 @@ public class GoodsDAOImpl extends BaseDAO implements GoodsDAO
 {
 	@Autowired
 	private GoodsMapper goodsMapper;
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public PageInfo<Goods> getGoodsByPage(SearchVO searchVO, int pageNum, int pageSize)
@@ -33,8 +32,23 @@ public class GoodsDAOImpl extends BaseDAO implements GoodsDAO
 		return pageInfo;
 	}
 	@Override
-	public Goods getGoodsByKey(Long id)
+	public Goods getGoods(Long id)
 	{
 		return goodsMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public void saveGoods(Goods goods)
+	{
+		goodsMapper.insertSelective(goods);
+	}
+	@Override
+	public void updateGoods(Goods goods)
+	{
+		goodsMapper.updateByPrimaryKeySelective(goods);
+	}
+	@Override
+	public void deleteGoods(Long id)
+	{
+		goodsMapper.deleteByPrimaryKey(id);
 	}
 }

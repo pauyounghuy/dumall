@@ -26,7 +26,12 @@ public class AddressServiceImpl extends BaseService implements AddressService
 	@Override
 	public List<Address> getAddress(Long userKey)
 	{
-		return null;
+		return addressDAO.getAddress(userKey);
+	}
+	@Override
+	public Address getAddressOne(Long id)
+	{
+		return addressDAO.getAddressOne(id);
 	}
 	@Override
 	public void saveAddress(Address address)

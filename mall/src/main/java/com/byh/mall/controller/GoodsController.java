@@ -1,6 +1,7 @@
 package com.byh.mall.controller;
 import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.Goods;
+import com.byh.mall.entity.Order;
 import com.byh.mall.service.GoodsService;
 import com.byh.mall.vo.SearchVO;
 import com.github.pagehelper.PageInfo;
@@ -26,4 +27,32 @@ public class GoodsController extends BaseController
 		return jsonResult.ok(gdsPage);
 	}
 
+	//增
+	@RequestMapping("/add")
+	public JSONResult addGoods(HttpServletRequest request,Goods goods)
+	{
+		goodsService.saveGoods(goods);
+		return jsonResult.ok();
+	}
+	// 删
+	@RequestMapping("/delete")
+	public JSONResult deleteGoods(HttpServletRequest request, Long id)
+	{
+		goodsService.deleteGoods(id);
+		return jsonResult.ok();
+	}
+	// 改
+	@RequestMapping("/update")
+	public JSONResult updaterGoods(HttpServletRequest request,Goods goods)
+	{
+		goodsService.updateGoods(goods);
+		return jsonResult.ok();
+	}
+	// 查
+	@RequestMapping("/select")
+	public JSONResult getGoods(HttpServletRequest request,Long id)
+	{
+		Goods goods = goodsService.getGoods(id);
+		return jsonResult.ok(goods);
+	}
 }

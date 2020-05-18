@@ -15,14 +15,12 @@ public class CartDAOImpl extends BaseDAO implements CartDAO
 {
 	@Autowired
 	private CartMapper cartMapper;
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public List<Cart> getCart(Long userKey)
 	{
 		Example example = new Example(Cart.class);
-		example.createCriteria().andEqualTo("userKey",userKey);
+		example.createCriteria().andEqualTo("UID",userKey);
 		return cartMapper.selectByExample(example);
 	}
 	@Override

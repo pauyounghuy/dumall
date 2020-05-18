@@ -83,8 +83,6 @@ p
 @mall/src/main/java/com/byh/mall/dao/mapper/OrderGoodsMapper.java,9\a\9a241ee612f8c7339d8ae94bbc5697b93237496e
 k
 ;mall/src/main/java/com/byh/mall/dao/mapper/OrderMapper.java,3\1\31e1637df2778b0ddcadb2104f47e5ce35c1dfdb
-Z
-*mall/src/main/java/commons/JSONResult.java,3\1\3131a26dd21b01c2c22f5ff86d3694a26e04d316
 t
 Dmall/src/main/java/com/byh/mall/service/impl/AddressServiceImpl.java,c\4\c4cc5370aba6dabaa53f364113bfc6e6a2314449
 q
@@ -175,3 +173,13 @@ g
 7mall/src/main/java/com/byh/mall/config/CacheConfig.java,d\5\d5a803b925dcefc4a7b2e84f48e718b68bec1457
 m
 =mall/src/main/java/com/byh/mall/utils/ConfigurationUtils.java,c\2\c263af13ea1756426d01aba772769f3ace99b20d
+h
+8mall/src/main/java/com/byh/mall/response/JSONResult.java,b\b\bb200a6ee3a8a8af1a2e2c02c46714f9e18ca919
+h
+8mall/src/main/java/com/byh/mall/utils/RocketMqUtils.java,2\f\2f6d8efad9b70817fc2e7b3c8d08a9188bf9b27d
+c
+3mall/src/main/java/com/byh/mall/utils/SMSUtils.java,d\4\d439378b1d58574908e0f4e9f69e5a621564ccc4
+b
+2mall/src/main/java/com/byh/mall/entity/AliYun.java,2\e\2e32deacaa59e1bbbef08b828dd171c19af300e8
+c
+3mall/src/main/java/com/byh/mall/utils/OSSUtils.java,a\0\a0e1d4053464134a0df7bfceaba951fa0c5be3ab

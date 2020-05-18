@@ -1,5 +1,19 @@
 
-S
-java:S1128"6Remove this unused import 'com.byh.mall.entity.Goods'.(öØïÚ8ãñ’å .
+Z
+java:S3752;">Add a "method" parameter to this "@RequestMapping" annotation.(¡Ã‚8ÈÍ¯°¢.
 `
-java:S3752">Add a "method" parameter to this "@RequestMapping" annotation.(ò©”ûÿÿÿÿ8Ï½å .
+java:S3752">Add a "method" parameter to this "@RequestMapping" annotation.(ò©”ûÿÿÿÿ8Ï½å .
+I
+java:S1481*",Remove this unused "adsList" local variable.(î¥íÏ8Ğ¼ä­¢.
+[
+java:S3752&">Add a "method" parameter to this "@RequestMapping" annotation.(ñ¬£ş8Á‰­¢.
+`
+java:S3752B">Add a "method" parameter to this "@RequestMapping" annotation.(·°»ëøÿÿÿÿ8ÈÍ¯°¢.
+[
+java:S37520">Add a "method" parameter to this "@RequestMapping" annotation.(Å©£¹8ÈÍ¯°¢.
+X
+java:S1128";Remove this unused import 'com.byh.mall.entity.OrderGoods'.(İ ¶8ÈÍ¯°¢.
+X
+java:S1854*";Remove this useless assignment to local variable "adsList".(î¥íÏ8Ğ¼ä­¢.
+h
+java:S3027E"FPut single-quotes around ',' to use the faster "indexOf(char)" method.(»«ÿÿÿÿÿ8»‚²¢.

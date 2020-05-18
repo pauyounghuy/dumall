@@ -20,8 +20,6 @@ public class AddressDAOImpl extends BaseDAO implements AddressDAO
 {
 	@Autowired
 	private AddressMapper addressMapper;
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public PageInfo<Address> getAddressByPage(SearchVO searchVO, int pageNum, int pageSize)

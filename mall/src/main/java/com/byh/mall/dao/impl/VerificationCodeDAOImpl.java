@@ -16,9 +16,6 @@ public class VerificationCodeDAOImpl extends BaseDAO implements VerificationCode
 {
 	@Autowired
 	VerificationCodeMapper verificationCodeMapper;
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
-
 
 	@Override
 	public VerificationCode getVerificationCode(Long id)
