@@ -26,6 +26,7 @@ public class CartController extends BaseController
 	@RequestMapping("/add")
 	public JSONResult addCart(HttpServletRequest request, Cart cart)
 	{
+		cart.setCreateDate(cart.getUpdateDate());
 		cartService.saveCart(cart);
 		return jsonResult.ok();
 	}
@@ -51,6 +52,7 @@ public class CartController extends BaseController
 	@RequestMapping("/update")
 	public JSONResult updateCart(HttpServletRequest request, Cart cart)
 	{
+		cart.setUpdateDate(cart.getUpdateDate());
 		cartService.updateCart(cart);
 		return jsonResult.ok();
 	}

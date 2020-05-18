@@ -47,7 +47,7 @@ public class IndexController extends BaseController
 
 		if (StringUtils.isEmpty(username)){
 			log.info("用户名不能为空");
-			return jsonResult.errorMsg("100000");
+			return jsonResult.errorCode("100000");
 		}
 
 		ObjectMapper om = new ObjectMapper();
@@ -58,24 +58,24 @@ public class IndexController extends BaseController
 			//校验验证码
 			int bool=VerifyCodeUtils.checkVerifyCode(request,hazelcast);
 			if(bool==0){
-				return jsonResult.errorMsg("000006");
+				return jsonResult.errorCode("000006");
 			}
 			if(bool==2){
-				return jsonResult.errorMsg("000005");
+				return jsonResult.errorCode("000005");
 			}
 			if (bool==3){
-				return jsonResult.errorMsg("000007");
+				return jsonResult.errorCode("000007");
 			}
 
 			//获取用户数据
 			user = userService.checkUsername(username);
 			if(ObjectUtils.isEmpty(user)){
 				log.info("用户名不存在");
-				return jsonResult.errorMsg("000001");
+				return jsonResult.errorCode("000001");
 			}
 			else{  //存在用户名,存入缓存
 				if (!password.equals(user.getPassword())){
-					return jsonResult.errorMsg("000000");
+					return jsonResult.errorCode("000000");
 				}
 
 				hazelcast.getMap("hazelcast-instance").putAsync("username", user);
@@ -96,31 +96,31 @@ public class IndexController extends BaseController
 	public JSONResult register(String username,String password,String pwd,String name,String mobile,String qq,String email){
 		if(!password.equals(pwd)){
 			log.info("前后密码不一致");
-			return jsonResult.errorMsg("100001");
+			return jsonResult.errorCode("100001");
 		}
 		if(StringUtils.isEmpty(username) && StringUtils.isEmpty(mobile) && StringUtils.isEmpty(email)){
-			return jsonResult.errorMsg("100010");
+			return jsonResult.errorCode("100010");
 		}
 		User user=null;
 		if (!StringUtils.isEmpty(username)){
 			user=userService.checkUsername(username);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return jsonResult.errorMsg("000002");
+				return jsonResult.errorCode("000002");
 			}
 		}
 		if (!StringUtils.isEmpty(email)){
 			user = userService.checkUsername(email);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return jsonResult.errorMsg("000004");
+				return jsonResult.errorCode("000004");
 			}
 		}
 		if (!StringUtils.isEmpty(mobile)){
 			user=userService.checkUsername(mobile);
 			if (!ObjectUtils.isEmpty(user))
 			{
-				return jsonResult.errorMsg("000003");
+				return jsonResult.errorCode("000003");
 			}
 		}
 

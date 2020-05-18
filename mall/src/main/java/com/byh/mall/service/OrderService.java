@@ -14,6 +14,8 @@ public interface OrderService
 	PageInfo<Order> getOrderByPage(SearchVO searchVO, int pageNum, int pageSize);
 
 	void saveOrder(Order order);
+	Long saveOrderByReturnKey(Order order);
+	void updateOrder(Order order);
 	void deleteOrder(Long id);
 	void deleteOrder(Long adsKey, Long userKey);
 	void saveOrderGoods(OrderGoods orderGoods);

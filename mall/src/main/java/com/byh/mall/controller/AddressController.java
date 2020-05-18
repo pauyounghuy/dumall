@@ -46,6 +46,7 @@ public class AddressController extends BaseController
 				addressService.updateAddress(ad);
 			}
 		}
+		address.setCreateDate(address.getCreateDate());
 		addressService.saveAddress(address);
 		return jsonResult.ok();
 	}
@@ -62,6 +63,7 @@ public class AddressController extends BaseController
 				addressService.updateAddress(ad);
 			}
 		}
+		address.setUpdateDate(address.getUpdateDate());
 		addressService.updateAddress(address);
 		return jsonResult.ok();
 	}

@@ -48,6 +48,16 @@ public class OrderServiceImpl extends BaseService implements OrderService
 		orderDAO.saveOrder(order);
 	}
 	@Override
+	public Long saveOrderByReturnKey(Order order)
+	{
+		return orderDAO.saveOrderReturnKey(order);
+	}
+	@Override
+	public void updateOrder(Order order)
+	{
+		orderDAO.updateOrder(order);
+	}
+	@Override
 	public void deleteOrder(Long id)
 	{
 		orderDAO.deleteOrder(id);

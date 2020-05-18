@@ -31,6 +31,7 @@ public class GoodsController extends BaseController
 	@RequestMapping("/add")
 	public JSONResult addGoods(HttpServletRequest request,Goods goods)
 	{
+		goods.setCreateDate(goods.getCreateDate());
 		goodsService.saveGoods(goods);
 		return jsonResult.ok();
 	}
@@ -45,6 +46,7 @@ public class GoodsController extends BaseController
 	@RequestMapping("/update")
 	public JSONResult updaterGoods(HttpServletRequest request,Goods goods)
 	{
+		goods.setUpdateDate(goods.getUpdateDate());
 		goodsService.updateGoods(goods);
 		return jsonResult.ok();
 	}

@@ -11,6 +11,7 @@ public interface OrderDAO
 	Order getOrder(Long id);
 	PageInfo<Order> getOrderByCondition(SearchVO searchVO, int pageNum, int pageSize);
 	void saveOrder(Order order);
+	Long saveOrderReturnKey(Order order);
 	void updateOrder(Order order);
 	void deleteOrder(Long id);
 	void deleteOrder(Long adsKey, Long userKey);

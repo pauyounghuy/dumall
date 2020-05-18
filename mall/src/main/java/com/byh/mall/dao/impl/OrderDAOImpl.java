@@ -50,6 +50,12 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO
 		orderMapper.insertSelective(order);
 	}
 	@Override
+	public Long saveOrderReturnKey(Order order)
+	{
+		 orderMapper.insertSelective(order);
+		return orderMapper.selectOne(order).getId();
+	}
+	@Override
 	public void updateOrder(Order order)
 	{
 		orderMapper.updateByPrimaryKeySelective(order);

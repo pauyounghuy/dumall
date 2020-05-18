@@ -1,4 +1,5 @@
 package com.byh.mall.controller;
+import com.alibaba.fastjson.JSONObject;
 import com.byh.mall.base.BaseController;
 import com.byh.mall.entity.Address;
 import com.byh.mall.entity.Goods;
@@ -96,12 +97,21 @@ public class OrderController extends BaseController
 	}
 	//保存
 	@RequestMapping("/save")
-	public JSONResult saveOrder(HttpServletRequest request, Long userKey, Long adsKey, int status, String completeDate, String goodsList)
+	public JSONResult saveOrder(HttpServletRequest request, Long userKey, Long adsKey, String goodsList)
 	{
+		List<OrderGoods> gds = JSONObject.parseArray(goodsList, OrderGoods.class);
 
+		Order order=new Order();
+		order.setAdsKey(adsKey);
+		order.setUserKey(userKey);
+		order.setStatus(0);
+		order.setCreateDate(order.getCreateDate());
+		Long key=orderService.saveOrderByReturnKey(order);
 
-
-
+		for (OrderGoods orderGoods:gds){
+			orderGoods.setOid(key);
+			orderService.saveOrderGoods(orderGoods);
+		}
 
 		return jsonResult.ok();
 	}
@@ -125,6 +135,53 @@ public class OrderController extends BaseController
 		return jsonResult.ok();
 	}
 
+	//订单取消
+	@RequestMapping("/cancel")
+	public JSONResult cancelOrder(HttpServletRequest request,Long id)
+	{
+		Order order=orderService.getOrder(id);
+		order.setStatus(2);
+		order.setUpdateDate(order.getUpdateDate());
+		orderService.updateOrder(order);
+		return jsonResult.ok();
+	}
+
+	//订单完成
+	@RequestMapping("/complete")
+	public JSONResult completeOrder(HttpServletRequest request,Long id)
+	{
+		Order order=orderService.getOrder(id);
+		if(order.getStatus()==2){  //订单已取消
+			return jsonResult.errorCode("200001");
+		}
+		order.setStatus(1);
+		order.setUpdateDate(order.getUpdateDate());
+
+		List<OrderGoods> oglist=orderService.getOgList(order.getId());
+		//判断库存是否足够
+		int cot=0;
+		for (OrderGoods og : oglist){
+			Goods goods=goodsService.getGoods(og.getOid());
+			cot = goods.getCount()-og.getQty();
+			if (cot < 0)
+			{
+				break;
+			}
+		}
+		if (cot<0){  //库存不足
+			return jsonResult.errorCode("200000");
+		}
+		for (OrderGoods og : oglist){
+			Goods goods=goodsService.getGoods(og.getOid());
+			//扣减库存
+			goods.setCount(goods.getCount()-og.getQty());
+			goods.setUpdateDate(goods.getUpdateDate());
+			goodsService.updateGoods(goods);
+		}
+
+		orderService.updateOrder(order);
+		return jsonResult.ok();
+	}
 
 
 }
