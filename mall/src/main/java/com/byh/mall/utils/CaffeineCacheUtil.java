@@ -1,5 +1,4 @@
 package com.byh.mall.utils;
-import com.byh.mall.exception.NoSuchCacheException;
 import com.github.benmanes.caffeine.cache.stats.CacheStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
